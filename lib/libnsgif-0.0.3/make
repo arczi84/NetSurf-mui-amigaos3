@@ -1,0 +1,1 @@
+make -j16 HOST=m68k-unknown-amigaos TARGET=amigaos3 -i PREFIX=/opt/netsurf/ AR=ar HOST_GCC=gcc CC=/opt/netsurf/m68k-unknown-amigaos/cross/bin/m68k-unknown-amigaos-gcc

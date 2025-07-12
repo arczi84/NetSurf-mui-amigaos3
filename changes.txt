@@ -1,0 +1,4 @@
+config.h
+/* HTTP Auth */
+//#warning "HTTP Auth is not implemented yet, so this is disabled by default."
+//#define WITH_AUTH

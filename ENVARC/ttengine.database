@@ -1,0 +1,68 @@
+# Baza czcionek TTEngine
+# Wygenerowana przez program TTManager1.2.
+
+CACHELIMIT=524288
+
+GAMMA=1500
+
+FAMILY="Andale Mono"
+  FILE="SYS:Fonts/_ttf/AndaleMo.TTF" WEIGHT="400" STYLE="regular" SMOOTHSMALL="9" SMOOTHBIG="18" FIXED="1"
+
+FAMILY="Arial"
+  FILE="SYS:Fonts/_ttf/Arial.TTF" WEIGHT="400" STYLE="regular" SMOOTHSMALL="9" SMOOTHBIG="18" FIXED="0"
+  FILE="SYS:Fonts/_ttf/Arialbi.TTF" WEIGHT="700" STYLE="italic" SMOOTHSMALL="8" SMOOTHBIG="16" FIXED="0"
+  FILE="SYS:Fonts/_ttf/Arialbd.TTF" WEIGHT="600" STYLE="regular" SMOOTHSMALL="8" SMOOTHBIG="17" FIXED="0"
+  FILE="SYS:Fonts/_ttf/Ariali.TTF" WEIGHT="500" STYLE="italic" SMOOTHSMALL="9" SMOOTHBIG="18" FIXED="0"
+
+FAMILY="Arial Black"
+  FILE="SYS:Fonts/_ttf/AriBlk.TTF" WEIGHT="800" STYLE="regular" SMOOTHSMALL="7" SMOOTHBIG="15" FIXED="0"
+
+FAMILY="Comic Sans MS"
+  FILE="SYS:Fonts/_ttf/Comic.TTF" WEIGHT="500" STYLE="regular" SMOOTHSMALL="9" SMOOTHBIG="18" FIXED="0"
+  FILE="SYS:Fonts/_ttf/Comicbd.TTF" WEIGHT="600" STYLE="regular" SMOOTHSMALL="8" SMOOTHBIG="17" FIXED="0"
+
+FAMILY="Courier New"
+  FILE="SYS:Fonts/_ttf/couri.ttf" WEIGHT="300" STYLE="italic" SMOOTHSMALL="9" SMOOTHBIG="19" FIXED="1"
+  FILE="SYS:Fonts/_ttf/courbi.ttf" WEIGHT="400" STYLE="italic" SMOOTHSMALL="9" SMOOTHBIG="18" FIXED="1"
+  FILE="SYS:Fonts/_ttf/courbd.ttf" WEIGHT="400" STYLE="regular" SMOOTHSMALL="9" SMOOTHBIG="18" FIXED="1"
+  FILE="SYS:Fonts/_ttf/cour.ttf" WEIGHT="300" STYLE="regular" SMOOTHSMALL="9" SMOOTHBIG="19" FIXED="1"
+
+FAMILY="Georgia"
+  FILE="SYS:Fonts/_ttf/Georgia.TTF" WEIGHT="500" STYLE="regular" SMOOTHSMALL="9" SMOOTHBIG="18" FIXED="0"
+  FILE="SYS:Fonts/_ttf/Georgiai.TTF" WEIGHT="500" STYLE="italic" SMOOTHSMALL="9" SMOOTHBIG="18" FIXED="0"
+  FILE="SYS:Fonts/_ttf/Georgiab.TTF" WEIGHT="700" STYLE="regular" SMOOTHSMALL="8" SMOOTHBIG="16" FIXED="0"
+  FILE="SYS:Fonts/_ttf/Georgiaz.TTF" WEIGHT="700" STYLE="italic" SMOOTHSMALL="8" SMOOTHBIG="16" FIXED="0"
+
+FAMILY="Impact"
+  FILE="SYS:Fonts/_ttf/Impact.TTF" WEIGHT="700" STYLE="regular" SMOOTHSMALL="8" SMOOTHBIG="16" FIXED="0"
+
+FAMILY="Times New Roman"
+  ALIAS="times"
+  ALIAS="default"
+  FILE="SYS:Fonts/_ttf/Timesi.TTF" WEIGHT="500" STYLE="italic" SMOOTHSMALL="9" SMOOTHBIG="18" FIXED="0"
+  FILE="SYS:Fonts/_ttf/Timesbi.TTF" WEIGHT="600" STYLE="italic" SMOOTHSMALL="8" SMOOTHBIG="17" FIXED="0"
+  FILE="SYS:Fonts/_ttf/Timesbd.TTF" WEIGHT="700" STYLE="regular" SMOOTHSMALL="8" SMOOTHBIG="16" FIXED="0"
+  FILE="SYS:Fonts/_ttf/Times.TTF" WEIGHT="500" STYLE="regular" SMOOTHSMALL="9" SMOOTHBIG="18" FIXED="0"
+
+FAMILY="Trebuchet MS"
+  FILE="SYS:Fonts/_ttf/trebucit.ttf" WEIGHT="500" STYLE="italic" SMOOTHSMALL="9" SMOOTHBIG="18" FIXED="0"
+  FILE="SYS:Fonts/_ttf/trebucbi.ttf" WEIGHT="600" STYLE="italic" SMOOTHSMALL="8" SMOOTHBIG="17" FIXED="0"
+  FILE="SYS:Fonts/_ttf/Trebucbd.ttf" WEIGHT="600" STYLE="regular" SMOOTHSMALL="8" SMOOTHBIG="17" FIXED="0"
+  FILE="SYS:Fonts/_ttf/trebuc.ttf" WEIGHT="500" STYLE="regular" SMOOTHSMALL="9" SMOOTHBIG="18" FIXED="0"
+
+FAMILY="Verdana"
+  FILE="SYS:Fonts/_ttf/Verdana.TTF" WEIGHT="500" STYLE="regular" SMOOTHSMALL="9" SMOOTHBIG="18" FIXED="0"
+  FILE="SYS:Fonts/_ttf/Verdanaz.TTF" WEIGHT="700" STYLE="italic" SMOOTHSMALL="8" SMOOTHBIG="16" FIXED="0"
+  FILE="SYS:Fonts/_ttf/Verdanai.TTF" WEIGHT="500" STYLE="italic" SMOOTHSMALL="9" SMOOTHBIG="18" FIXED="0"
+  FILE="SYS:Fonts/_ttf/Verdanab.TTF" WEIGHT="700" STYLE="regular" SMOOTHSMALL="8" SMOOTHBIG="16" FIXED="0"
+
+FAMILY="Webdings"
+  FILE="SYS:Fonts/_ttf/Webdings.TTF" WEIGHT="400" STYLE="regular" SMOOTHSMALL="9" SMOOTHBIG="18" FIXED="0"
+           
+FAMILY="DejaVu Sans"
+  ALIAS="default2"
+  FILE="MOSSYS:Fonts/_ttf/DejaVuSans.ttf" WEIGHT="400" STYLE="regular" SMOOTHSMALL="9" SMOOTHBIG="18" FIXED="0"
+  FILE="MOSSYS:Fonts/_ttf/DejaVuSans-Bold.ttf" WEIGHT="700" STYLE="regular" SMOOTHSMALL="8" SMOOTHBIG="16" FIXED="0"
+  FILE="MOSSYS:Fonts/_ttf/DejaVuSans-BoldOblique.ttf" WEIGHT="800" STYLE="italic" SMOOTHSMALL="7" SMOOTHBIG="15" FIXED="0"
+  FILE="MOSSYS:Fonts/_ttf/DejaVuSans-Oblique.ttf" WEIGHT="500" STYLE="italic" SMOOTHSMALL="9" SMOOTHBIG="18" FIXED="0"
+

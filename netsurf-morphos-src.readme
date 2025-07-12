@@ -1,0 +1,61 @@
+Short:        Source code for NetSurf MorphOS port
+Author:       Various, Ilkka Lehtoranta
+Uploader:     Ilkka Lehtoranta (ilkleht@isoveli.org)
+Type:         dev/c
+Version:      2.0 dev (SVN 6141)
+Architecture: generic
+
+This archive contains source code for NetSurf MorphOS port.
+
+Below is brief summary of NetSurf features:
+
+ * Object oriented and multithreaded MUI GUI
+ * IBrowse compatible hotlist
+ * Search bar, tabs, Unicode
+ * Web standards: HTML 4.01 and CSS 2.1
+ * Image formats: PNG, GIF, JPEG, JNG, MNG and BMP
+ * Save web pages in HTML or PDF format
+ * Download manager
+ * Intelligent cache management
+
+Changes in this release:
+ * Added printing
+ * Added GPL license
+ * Adjusted DPI to get correctly sized fonts
+
+Minimum requirements:
+
+ * MorphOS 2.2
+ * hpdf.library 2.0
+ * mng.library 2.0
+ * littlecms.library 3.0
+
+
+Features missing but planned for the next two weeks:
+
+ * Bug fixes
+ * Better ARexx support
+ * Edit in hotlist manager
+ * Abort in download manager
+ * More intelligent cache management
+ * Text search
+ * SSL support
+ * Fastlinks
+ * Configurable mimetypes
+ * URL completion
+
+
+Please note that text input in NetSurf work properly only with Unicode keymaps
+(keymaps supplied with MorphOS 2.0 and newer).
+
+About bugs in NetSurf: every user is guaranteed to find at least one bug or
+feature from NetSurf and therefore it is not worth of job to mention about
+those. ATM there are too many and I know about them. They get fixed when they
+get fixed.
+
+If you wish to port NetSurf to OS3 I can help with porting but I dont really
+have time or interest to do it myself. However porting MUI GUI to OS3 is very
+easy except for some missing classes and API calls.
+
+
+  http://www.netsurf-browser.org

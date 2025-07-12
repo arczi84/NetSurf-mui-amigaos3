@@ -1,0 +1,2506 @@
+State 0:
+          stylesheet ::= * ws statement_list
+     (74) ws ::= *
+          ws ::= * ws_1
+          ws_1 ::= * S
+          ws_1 ::= * ws_1 S
+
+                             S shift-reduce 76     ws_1 ::= S
+                             S reduce       74      ** Parsing conflict **
+                    stylesheet accept
+                            ws shift        80     
+                          ws_1 shift        126    
+                     {default} reduce       74     ws ::=
+
+State 1:
+     (73) stylesheet ::= ws statement_list *
+          ws_1 ::= * S
+          ws_1 ::= * ws_1 S
+          statement_list ::= statement_list * statement
+          statement ::= * ws_1
+          statement ::= * ruleset
+          statement ::= * at_rule
+          at_rule ::= * ATKEYWORD ws any_list block
+          at_rule ::= * ATKEYWORD ws any_list SEMI ws
+          ruleset ::= * selector_list LBRACE ws declaration_list RBRACE ws
+          ruleset ::= * LBRACE declaration_list RBRACE
+          ruleset ::= * any_list_1 LBRACE declaration_list RBRACE
+          selector_list ::= * selector ws
+          selector_list ::= * selector_list COMMA ws selector ws
+          selector ::= * simple_selector
+          selector ::= * selector css_combinator simple_selector
+          simple_selector ::= * element_name detail_list
+          simple_selector ::= * element_name
+          simple_selector ::= * detail_list
+          element_name ::= * IDENT
+          element_name ::= * ASTERISK
+          detail_list ::= * detail
+          detail_list ::= * detail detail_list
+          detail ::= * HASH
+          detail ::= * DOT IDENT
+          detail ::= * LBRAC ws IDENT ws RBRAC
+          detail ::= * LBRAC ws IDENT ws EQUALS ws IDENT ws RBRAC
+          detail ::= * LBRAC ws IDENT ws EQUALS ws STRING ws RBRAC
+          detail ::= * LBRAC ws IDENT ws INCLUDES ws IDENT ws RBRAC
+          detail ::= * LBRAC ws IDENT ws INCLUDES ws STRING ws RBRAC
+          detail ::= * LBRAC ws IDENT ws DASHMATCH ws IDENT ws RBRAC
+          detail ::= * LBRAC ws IDENT ws DASHMATCH ws STRING ws RBRAC
+          detail ::= * LBRAC ws IDENT ws PREFIX ws IDENT ws RBRAC
+          detail ::= * LBRAC ws IDENT ws PREFIX ws STRING ws RBRAC
+          detail ::= * LBRAC ws IDENT ws SUFFIX ws IDENT ws RBRAC
+          detail ::= * LBRAC ws IDENT ws SUFFIX ws STRING ws RBRAC
+          detail ::= * LBRAC ws IDENT ws SUBSTR ws IDENT ws RBRAC
+          detail ::= * LBRAC ws IDENT ws SUBSTR ws STRING ws RBRAC
+          detail ::= * COLON IDENT
+          detail ::= * COLON FUNCTION ws IDENT ws RPAREN
+          detail ::= * COLON FUNCTION ws RPAREN
+          any_list_1 ::= * any ws any_list
+          any ::= * IDENT
+          any ::= * NUMBER
+          any ::= * PERCENTAGE
+          any ::= * DIMENSION
+          any ::= * STRING
+          any ::= * DELIM
+          any ::= * URI
+          any ::= * HASH
+          any ::= * UNICODE_RANGE
+          any ::= * INCLUDES
+          any ::= * FUNCTION ws any_list RPAREN
+          any ::= * DASHMATCH
+          any ::= * PREFIX
+          any ::= * SUFFIX
+          any ::= * SUBSTR
+          any ::= * COLON
+          any ::= * COMMA
+          any ::= * DOT
+          any ::= * PLUS
+          any ::= * GT
+          any ::= * LPAREN ws any_list RPAREN
+          any ::= * LBRAC ws any_list RBRAC
+          any ::= * ASTERISK
+
+                             $ reduce       73     stylesheet ::= ws statement_list
+                             S shift-reduce 76     ws_1 ::= S
+                     ATKEYWORD shift        73     
+                        LBRACE shift        3      
+                         COMMA shift-reduce 66     any ::= COMMA
+                          PLUS shift-reduce 68     any ::= PLUS
+                            GT shift-reduce 69     any ::= GT
+                         IDENT shift        83     
+                      ASTERISK shift        82     
+                          HASH shift        81     
+                           DOT shift        102    
+                         LBRAC shift        25     
+                        STRING shift-reduce 54     any ::= STRING
+                      INCLUDES shift-reduce 59     any ::= INCLUDES
+                     DASHMATCH shift-reduce 61     any ::= DASHMATCH
+                        PREFIX shift-reduce 62     any ::= PREFIX
+                        SUFFIX shift-reduce 63     any ::= SUFFIX
+                        SUBSTR shift-reduce 64     any ::= SUBSTR
+                         COLON shift        86     
+                      FUNCTION shift        66     
+                         DELIM shift-reduce 55     any ::= DELIM
+                        NUMBER shift-reduce 51     any ::= NUMBER
+                    PERCENTAGE shift-reduce 52     any ::= PERCENTAGE
+                     DIMENSION shift-reduce 53     any ::= DIMENSION
+                           URI shift-reduce 56     any ::= URI
+                 UNICODE_RANGE shift-reduce 58     any ::= UNICODE_RANGE
+                        LPAREN shift        64     
+                          ws_1 shift        127    
+                     statement shift-reduce 79     statement_list ::= statement_list statement
+                       ruleset shift-reduce 79     statement_list ::= statement_list statement  /* because ruleset==statement */
+                       at_rule shift-reduce 79     statement_list ::= statement_list statement  /* because at_rule==statement */
+                           any shift        51     
+                 selector_list shift        101    
+                    any_list_1 shift        103    
+                      selector shift        8      
+               simple_selector shift-reduce 6      selector ::= simple_selector
+                  element_name shift        23     
+                   detail_list shift-reduce 13     simple_selector ::= detail_list
+                        detail shift        22     
+
+State 2:
+          ruleset ::= any_list_1 LBRACE * declaration_list RBRACE
+     (36) declaration_list ::= *
+          declaration_list ::= * declaration
+          declaration_list ::= * declaration_list SEMI
+          declaration_list ::= * declaration SEMI ws declaration_list
+          declaration ::= * DELIM property ws COLON ws value ws
+          declaration ::= * property ws COLON ws value ws
+          declaration ::= * any_list_1
+          property ::= * IDENT
+          any_list_1 ::= * any ws any_list
+          any ::= * IDENT
+          any ::= * NUMBER
+          any ::= * PERCENTAGE
+          any ::= * DIMENSION
+          any ::= * STRING
+          any ::= * DELIM
+          any ::= * URI
+          any ::= * HASH
+          any ::= * UNICODE_RANGE
+          any ::= * INCLUDES
+          any ::= * FUNCTION ws any_list RPAREN
+          any ::= * DASHMATCH
+          any ::= * PREFIX
+          any ::= * SUFFIX
+          any ::= * SUBSTR
+          any ::= * COLON
+          any ::= * COMMA
+          any ::= * DOT
+          any ::= * PLUS
+          any ::= * GT
+          any ::= * LPAREN ws any_list RPAREN
+          any ::= * LBRAC ws any_list RBRAC
+          any ::= * ASTERISK
+
+                         COMMA shift-reduce 66     any ::= COMMA
+                          PLUS shift-reduce 68     any ::= PLUS
+                            GT shift-reduce 69     any ::= GT
+                         IDENT shift        99     
+                      ASTERISK shift-reduce 72     any ::= ASTERISK
+                          HASH shift-reduce 57     any ::= HASH
+                           DOT shift-reduce 67     any ::= DOT
+                         LBRAC shift        63     
+                        STRING shift-reduce 54     any ::= STRING
+                      INCLUDES shift-reduce 59     any ::= INCLUDES
+                     DASHMATCH shift-reduce 61     any ::= DASHMATCH
+                        PREFIX shift-reduce 62     any ::= PREFIX
+                        SUFFIX shift-reduce 63     any ::= SUFFIX
+                        SUBSTR shift-reduce 64     any ::= SUBSTR
+                         COLON shift-reduce 65     any ::= COLON
+                      FUNCTION shift        66     
+                         DELIM shift        78     
+                        NUMBER shift-reduce 51     any ::= NUMBER
+                    PERCENTAGE shift-reduce 52     any ::= PERCENTAGE
+                     DIMENSION shift-reduce 53     any ::= DIMENSION
+                           URI shift-reduce 56     any ::= URI
+                 UNICODE_RANGE shift-reduce 58     any ::= UNICODE_RANGE
+                        LPAREN shift        64     
+                           any shift        51     
+              declaration_list shift        88     
+                    any_list_1 shift-reduce 41     declaration ::= any_list_1
+                   declaration shift        122    
+                      property shift        54     
+                     {default} reduce       36     declaration_list ::=
+
+State 3:
+          ruleset ::= LBRACE * declaration_list RBRACE
+     (36) declaration_list ::= *
+          declaration_list ::= * declaration
+          declaration_list ::= * declaration_list SEMI
+          declaration_list ::= * declaration SEMI ws declaration_list
+          declaration ::= * DELIM property ws COLON ws value ws
+          declaration ::= * property ws COLON ws value ws
+          declaration ::= * any_list_1
+          property ::= * IDENT
+          any_list_1 ::= * any ws any_list
+          any ::= * IDENT
+          any ::= * NUMBER
+          any ::= * PERCENTAGE
+          any ::= * DIMENSION
+          any ::= * STRING
+          any ::= * DELIM
+          any ::= * URI
+          any ::= * HASH
+          any ::= * UNICODE_RANGE
+          any ::= * INCLUDES
+          any ::= * FUNCTION ws any_list RPAREN
+          any ::= * DASHMATCH
+          any ::= * PREFIX
+          any ::= * SUFFIX
+          any ::= * SUBSTR
+          any ::= * COLON
+          any ::= * COMMA
+          any ::= * DOT
+          any ::= * PLUS
+          any ::= * GT
+          any ::= * LPAREN ws any_list RPAREN
+          any ::= * LBRAC ws any_list RBRAC
+          any ::= * ASTERISK
+
+                         COMMA shift-reduce 66     any ::= COMMA
+                          PLUS shift-reduce 68     any ::= PLUS
+                            GT shift-reduce 69     any ::= GT
+                         IDENT shift        99     
+                      ASTERISK shift-reduce 72     any ::= ASTERISK
+                          HASH shift-reduce 57     any ::= HASH
+                           DOT shift-reduce 67     any ::= DOT
+                         LBRAC shift        63     
+                        STRING shift-reduce 54     any ::= STRING
+                      INCLUDES shift-reduce 59     any ::= INCLUDES
+                     DASHMATCH shift-reduce 61     any ::= DASHMATCH
+                        PREFIX shift-reduce 62     any ::= PREFIX
+                        SUFFIX shift-reduce 63     any ::= SUFFIX
+                        SUBSTR shift-reduce 64     any ::= SUBSTR
+                         COLON shift-reduce 65     any ::= COLON
+                      FUNCTION shift        66     
+                         DELIM shift        78     
+                        NUMBER shift-reduce 51     any ::= NUMBER
+                    PERCENTAGE shift-reduce 52     any ::= PERCENTAGE
+                     DIMENSION shift-reduce 53     any ::= DIMENSION
+                           URI shift-reduce 56     any ::= URI
+                 UNICODE_RANGE shift-reduce 58     any ::= UNICODE_RANGE
+                        LPAREN shift        64     
+                           any shift        51     
+              declaration_list shift        89     
+                    any_list_1 shift-reduce 41     declaration ::= any_list_1
+                   declaration shift        122    
+                      property shift        54     
+                     {default} reduce       36     declaration_list ::=
+
+State 4:
+     (36) declaration_list ::= *
+          declaration_list ::= * declaration
+          declaration_list ::= * declaration_list SEMI
+          declaration_list ::= * declaration SEMI ws declaration_list
+          declaration_list ::= declaration SEMI ws * declaration_list
+          declaration ::= * DELIM property ws COLON ws value ws
+          declaration ::= * property ws COLON ws value ws
+          declaration ::= * any_list_1
+          property ::= * IDENT
+          any_list_1 ::= * any ws any_list
+          any ::= * IDENT
+          any ::= * NUMBER
+          any ::= * PERCENTAGE
+          any ::= * DIMENSION
+          any ::= * STRING
+          any ::= * DELIM
+          any ::= * URI
+          any ::= * HASH
+          any ::= * UNICODE_RANGE
+          any ::= * INCLUDES
+          any ::= * FUNCTION ws any_list RPAREN
+          any ::= * DASHMATCH
+          any ::= * PREFIX
+          any ::= * SUFFIX
+          any ::= * SUBSTR
+          any ::= * COLON
+          any ::= * COMMA
+          any ::= * DOT
+          any ::= * PLUS
+          any ::= * GT
+          any ::= * LPAREN ws any_list RPAREN
+          any ::= * LBRAC ws any_list RBRAC
+          any ::= * ASTERISK
+
+                         COMMA shift-reduce 66     any ::= COMMA
+                          PLUS shift-reduce 68     any ::= PLUS
+                            GT shift-reduce 69     any ::= GT
+                         IDENT shift        99     
+                      ASTERISK shift-reduce 72     any ::= ASTERISK
+                          HASH shift-reduce 57     any ::= HASH
+                           DOT shift-reduce 67     any ::= DOT
+                         LBRAC shift        63     
+                        STRING shift-reduce 54     any ::= STRING
+                      INCLUDES shift-reduce 59     any ::= INCLUDES
+                     DASHMATCH shift-reduce 61     any ::= DASHMATCH
+                        PREFIX shift-reduce 62     any ::= PREFIX
+                        SUFFIX shift-reduce 63     any ::= SUFFIX
+                        SUBSTR shift-reduce 64     any ::= SUBSTR
+                         COLON shift-reduce 65     any ::= COLON
+                      FUNCTION shift        66     
+                         DELIM shift        78     
+                        NUMBER shift-reduce 51     any ::= NUMBER
+                    PERCENTAGE shift-reduce 52     any ::= PERCENTAGE
+                     DIMENSION shift-reduce 53     any ::= DIMENSION
+                           URI shift-reduce 56     any ::= URI
+                 UNICODE_RANGE shift-reduce 58     any ::= UNICODE_RANGE
+                        LPAREN shift        64     
+                           any shift        51     
+              declaration_list shift        121    
+                    any_list_1 shift-reduce 41     declaration ::= any_list_1
+                   declaration shift        122    
+                      property shift        54     
+                     {default} reduce       36     declaration_list ::=
+
+State 5:
+          ruleset ::= selector_list LBRACE ws * declaration_list RBRACE ws
+     (36) declaration_list ::= *
+          declaration_list ::= * declaration
+          declaration_list ::= * declaration_list SEMI
+          declaration_list ::= * declaration SEMI ws declaration_list
+          declaration ::= * DELIM property ws COLON ws value ws
+          declaration ::= * property ws COLON ws value ws
+          declaration ::= * any_list_1
+          property ::= * IDENT
+          any_list_1 ::= * any ws any_list
+          any ::= * IDENT
+          any ::= * NUMBER
+          any ::= * PERCENTAGE
+          any ::= * DIMENSION
+          any ::= * STRING
+          any ::= * DELIM
+          any ::= * URI
+          any ::= * HASH
+          any ::= * UNICODE_RANGE
+          any ::= * INCLUDES
+          any ::= * FUNCTION ws any_list RPAREN
+          any ::= * DASHMATCH
+          any ::= * PREFIX
+          any ::= * SUFFIX
+          any ::= * SUBSTR
+          any ::= * COLON
+          any ::= * COMMA
+          any ::= * DOT
+          any ::= * PLUS
+          any ::= * GT
+          any ::= * LPAREN ws any_list RPAREN
+          any ::= * LBRAC ws any_list RBRAC
+          any ::= * ASTERISK
+
+                         COMMA shift-reduce 66     any ::= COMMA
+                          PLUS shift-reduce 68     any ::= PLUS
+                            GT shift-reduce 69     any ::= GT
+                         IDENT shift        99     
+                      ASTERISK shift-reduce 72     any ::= ASTERISK
+                          HASH shift-reduce 57     any ::= HASH
+                           DOT shift-reduce 67     any ::= DOT
+                         LBRAC shift        63     
+                        STRING shift-reduce 54     any ::= STRING
+                      INCLUDES shift-reduce 59     any ::= INCLUDES
+                     DASHMATCH shift-reduce 61     any ::= DASHMATCH
+                        PREFIX shift-reduce 62     any ::= PREFIX
+                        SUFFIX shift-reduce 63     any ::= SUFFIX
+                        SUBSTR shift-reduce 64     any ::= SUBSTR
+                         COLON shift-reduce 65     any ::= COLON
+                      FUNCTION shift        66     
+                         DELIM shift        78     
+                        NUMBER shift-reduce 51     any ::= NUMBER
+                    PERCENTAGE shift-reduce 52     any ::= PERCENTAGE
+                     DIMENSION shift-reduce 53     any ::= DIMENSION
+                           URI shift-reduce 56     any ::= URI
+                 UNICODE_RANGE shift-reduce 58     any ::= UNICODE_RANGE
+                        LPAREN shift        64     
+                           any shift        51     
+              declaration_list shift        100    
+                    any_list_1 shift-reduce 41     declaration ::= any_list_1
+                   declaration shift        122    
+                      property shift        54     
+                     {default} reduce       36     declaration_list ::=
+
+State 6:
+          selector_list ::= selector_list COMMA ws * selector ws
+          selector ::= * simple_selector
+          selector ::= * selector css_combinator simple_selector
+          simple_selector ::= * element_name detail_list
+          simple_selector ::= * element_name
+          simple_selector ::= * detail_list
+          element_name ::= * IDENT
+          element_name ::= * ASTERISK
+          detail_list ::= * detail
+          detail_list ::= * detail detail_list
+          detail ::= * HASH
+          detail ::= * DOT IDENT
+          detail ::= * LBRAC ws IDENT ws RBRAC
+          detail ::= * LBRAC ws IDENT ws EQUALS ws IDENT ws RBRAC
+          detail ::= * LBRAC ws IDENT ws EQUALS ws STRING ws RBRAC
+          detail ::= * LBRAC ws IDENT ws INCLUDES ws IDENT ws RBRAC
+          detail ::= * LBRAC ws IDENT ws INCLUDES ws STRING ws RBRAC
+          detail ::= * LBRAC ws IDENT ws DASHMATCH ws IDENT ws RBRAC
+          detail ::= * LBRAC ws IDENT ws DASHMATCH ws STRING ws RBRAC
+          detail ::= * LBRAC ws IDENT ws PREFIX ws IDENT ws RBRAC
+          detail ::= * LBRAC ws IDENT ws PREFIX ws STRING ws RBRAC
+          detail ::= * LBRAC ws IDENT ws SUFFIX ws IDENT ws RBRAC
+          detail ::= * LBRAC ws IDENT ws SUFFIX ws STRING ws RBRAC
+          detail ::= * LBRAC ws IDENT ws SUBSTR ws IDENT ws RBRAC
+          detail ::= * LBRAC ws IDENT ws SUBSTR ws STRING ws RBRAC
+          detail ::= * COLON IDENT
+          detail ::= * COLON FUNCTION ws IDENT ws RPAREN
+          detail ::= * COLON FUNCTION ws RPAREN
+
+                         IDENT shift-reduce 14     element_name ::= IDENT
+                      ASTERISK shift-reduce 15     element_name ::= ASTERISK
+                          HASH shift-reduce 18     detail ::= HASH
+                           DOT shift        118    
+                         LBRAC shift        47     
+                         COLON shift        91     
+                      selector shift        9      
+               simple_selector shift-reduce 6      selector ::= simple_selector
+                  element_name shift        23     
+                   detail_list shift-reduce 13     simple_selector ::= detail_list
+                        detail shift        22     
+
+State 7:
+          selector ::= selector css_combinator * simple_selector
+          simple_selector ::= * element_name detail_list
+          simple_selector ::= * element_name
+          simple_selector ::= * detail_list
+          element_name ::= * IDENT
+          element_name ::= * ASTERISK
+          detail_list ::= * detail
+          detail_list ::= * detail detail_list
+          detail ::= * HASH
+          detail ::= * DOT IDENT
+          detail ::= * LBRAC ws IDENT ws RBRAC
+          detail ::= * LBRAC ws IDENT ws EQUALS ws IDENT ws RBRAC
+          detail ::= * LBRAC ws IDENT ws EQUALS ws STRING ws RBRAC
+          detail ::= * LBRAC ws IDENT ws INCLUDES ws IDENT ws RBRAC
+          detail ::= * LBRAC ws IDENT ws INCLUDES ws STRING ws RBRAC
+          detail ::= * LBRAC ws IDENT ws DASHMATCH ws IDENT ws RBRAC
+          detail ::= * LBRAC ws IDENT ws DASHMATCH ws STRING ws RBRAC
+          detail ::= * LBRAC ws IDENT ws PREFIX ws IDENT ws RBRAC
+          detail ::= * LBRAC ws IDENT ws PREFIX ws STRING ws RBRAC
+          detail ::= * LBRAC ws IDENT ws SUFFIX ws IDENT ws RBRAC
+          detail ::= * LBRAC ws IDENT ws SUFFIX ws STRING ws RBRAC
+          detail ::= * LBRAC ws IDENT ws SUBSTR ws IDENT ws RBRAC
+          detail ::= * LBRAC ws IDENT ws SUBSTR ws STRING ws RBRAC
+          detail ::= * COLON IDENT
+          detail ::= * COLON FUNCTION ws IDENT ws RPAREN
+          detail ::= * COLON FUNCTION ws RPAREN
+
+                         IDENT shift-reduce 14     element_name ::= IDENT
+                      ASTERISK shift-reduce 15     element_name ::= ASTERISK
+                          HASH shift-reduce 18     detail ::= HASH
+                           DOT shift        118    
+                         LBRAC shift        47     
+                         COLON shift        91     
+               simple_selector shift-reduce 7      selector ::= selector css_combinator simple_selector
+                  element_name shift        23     
+                   detail_list shift-reduce 13     simple_selector ::= detail_list
+                        detail shift        22     
+
+State 8:
+     (74) ws ::= *
+          ws ::= * ws_1
+          ws_1 ::= * S
+          ws_1 ::= * ws_1 S
+          selector_list ::= selector * ws
+          selector ::= selector * css_combinator simple_selector
+          css_combinator ::= * ws PLUS ws
+          css_combinator ::= * ws GT ws
+          css_combinator ::= * ws_1
+
+                             S shift-reduce 76     ws_1 ::= S
+                            ws shift        87     
+                          ws_1 shift        85     
+                css_combinator shift        7      
+                     {default} reduce       74     ws ::=
+
+State 9:
+     (74) ws ::= *
+          ws ::= * ws_1
+          ws_1 ::= * S
+          ws_1 ::= * ws_1 S
+          selector_list ::= selector_list COMMA ws selector * ws
+          selector ::= selector * css_combinator simple_selector
+          css_combinator ::= * ws PLUS ws
+          css_combinator ::= * ws GT ws
+          css_combinator ::= * ws_1
+
+                             S shift-reduce 76     ws_1 ::= S
+                            ws shift        98     
+                          ws_1 shift        85     
+                css_combinator shift        7      
+                     {default} reduce       74     ws ::=
+
+State 10:
+          block ::= * LBRACE ws block_body RBRACE ws
+          block ::= LBRACE ws block_body * RBRACE ws
+          block_body ::= block_body * any ws
+          block_body ::= block_body * block
+          block_body ::= block_body * ATKEYWORD ws
+          block_body ::= block_body * SEMI ws
+          any ::= * IDENT
+          any ::= * NUMBER
+          any ::= * PERCENTAGE
+          any ::= * DIMENSION
+          any ::= * STRING
+          any ::= * DELIM
+          any ::= * URI
+          any ::= * HASH
+          any ::= * UNICODE_RANGE
+          any ::= * INCLUDES
+          any ::= * FUNCTION ws any_list RPAREN
+          any ::= * DASHMATCH
+          any ::= * PREFIX
+          any ::= * SUFFIX
+          any ::= * SUBSTR
+          any ::= * COLON
+          any ::= * COMMA
+          any ::= * DOT
+          any ::= * PLUS
+          any ::= * GT
+          any ::= * LPAREN ws any_list RPAREN
+          any ::= * LBRAC ws any_list RBRAC
+          any ::= * ASTERISK
+
+                     ATKEYWORD shift        68     
+                          SEMI shift        67     
+                        LBRACE shift        71     
+                        RBRACE shift        70     
+                         COMMA shift-reduce 66     any ::= COMMA
+                          PLUS shift-reduce 68     any ::= PLUS
+                            GT shift-reduce 69     any ::= GT
+                         IDENT shift-reduce 50     any ::= IDENT
+                      ASTERISK shift-reduce 72     any ::= ASTERISK
+                          HASH shift-reduce 57     any ::= HASH
+                           DOT shift-reduce 67     any ::= DOT
+                         LBRAC shift        63     
+                        STRING shift-reduce 54     any ::= STRING
+                      INCLUDES shift-reduce 59     any ::= INCLUDES
+                     DASHMATCH shift-reduce 61     any ::= DASHMATCH
+                        PREFIX shift-reduce 62     any ::= PREFIX
+                        SUFFIX shift-reduce 63     any ::= SUFFIX
+                        SUBSTR shift-reduce 64     any ::= SUBSTR
+                         COLON shift-reduce 65     any ::= COLON
+                      FUNCTION shift        66     
+                         DELIM shift-reduce 55     any ::= DELIM
+                        NUMBER shift-reduce 51     any ::= NUMBER
+                    PERCENTAGE shift-reduce 52     any ::= PERCENTAGE
+                     DIMENSION shift-reduce 53     any ::= DIMENSION
+                           URI shift-reduce 56     any ::= URI
+                 UNICODE_RANGE shift-reduce 58     any ::= UNICODE_RANGE
+                        LPAREN shift        64     
+                         block shift-reduce 87     block_body ::= block_body block
+                           any shift        69     
+
+State 11:
+          detail ::= LBRAC ws * IDENT ws RBRAC
+          detail ::= LBRAC ws * IDENT ws EQUALS ws IDENT ws RBRAC
+          detail ::= LBRAC ws * IDENT ws EQUALS ws STRING ws RBRAC
+          detail ::= LBRAC ws * IDENT ws INCLUDES ws IDENT ws RBRAC
+          detail ::= LBRAC ws * IDENT ws INCLUDES ws STRING ws RBRAC
+          detail ::= LBRAC ws * IDENT ws DASHMATCH ws IDENT ws RBRAC
+          detail ::= LBRAC ws * IDENT ws DASHMATCH ws STRING ws RBRAC
+          detail ::= LBRAC ws * IDENT ws PREFIX ws IDENT ws RBRAC
+          detail ::= LBRAC ws * IDENT ws PREFIX ws STRING ws RBRAC
+          detail ::= LBRAC ws * IDENT ws SUFFIX ws IDENT ws RBRAC
+          detail ::= LBRAC ws * IDENT ws SUFFIX ws STRING ws RBRAC
+          detail ::= LBRAC ws * IDENT ws SUBSTR ws IDENT ws RBRAC
+          detail ::= LBRAC ws * IDENT ws SUBSTR ws STRING ws RBRAC
+     (47) any_list ::= *
+          any_list ::= * any ws any_list
+          any ::= * IDENT
+          any ::= * NUMBER
+          any ::= * PERCENTAGE
+          any ::= * DIMENSION
+          any ::= * STRING
+          any ::= * DELIM
+          any ::= * URI
+          any ::= * HASH
+          any ::= * UNICODE_RANGE
+          any ::= * INCLUDES
+          any ::= * FUNCTION ws any_list RPAREN
+          any ::= * DASHMATCH
+          any ::= * PREFIX
+          any ::= * SUFFIX
+          any ::= * SUBSTR
+          any ::= * COLON
+          any ::= * COMMA
+          any ::= * DOT
+          any ::= * PLUS
+          any ::= * GT
+          any ::= * LPAREN ws any_list RPAREN
+          any ::= * LBRAC ws any_list RBRAC
+          any ::= LBRAC ws * any_list RBRAC
+          any ::= * ASTERISK
+
+                         COMMA shift-reduce 66     any ::= COMMA
+                          PLUS shift-reduce 68     any ::= PLUS
+                            GT shift-reduce 69     any ::= GT
+                         IDENT shift        21     
+                      ASTERISK shift-reduce 72     any ::= ASTERISK
+                          HASH shift-reduce 57     any ::= HASH
+                           DOT shift-reduce 67     any ::= DOT
+                         LBRAC shift        63     
+                        STRING shift-reduce 54     any ::= STRING
+                      INCLUDES shift-reduce 59     any ::= INCLUDES
+                     DASHMATCH shift-reduce 61     any ::= DASHMATCH
+                        PREFIX shift-reduce 62     any ::= PREFIX
+                        SUFFIX shift-reduce 63     any ::= SUFFIX
+                        SUBSTR shift-reduce 64     any ::= SUBSTR
+                         COLON shift-reduce 65     any ::= COLON
+                      FUNCTION shift        66     
+                         DELIM shift-reduce 55     any ::= DELIM
+                        NUMBER shift-reduce 51     any ::= NUMBER
+                    PERCENTAGE shift-reduce 52     any ::= PERCENTAGE
+                     DIMENSION shift-reduce 53     any ::= DIMENSION
+                           URI shift-reduce 56     any ::= URI
+                 UNICODE_RANGE shift-reduce 58     any ::= UNICODE_RANGE
+                        LPAREN shift        64     
+                      any_list shift        124    
+                           any shift        65     
+                     {default} reduce       47     any_list ::=
+
+State 12:
+     (47) any_list ::= *
+          any_list ::= * any ws any_list
+          any_list_1 ::= any ws * any_list
+          any ::= * IDENT
+          any ::= * NUMBER
+          any ::= * PERCENTAGE
+          any ::= * DIMENSION
+          any ::= * STRING
+          any ::= * DELIM
+          any ::= * URI
+          any ::= * HASH
+          any ::= * UNICODE_RANGE
+          any ::= * INCLUDES
+          any ::= * FUNCTION ws any_list RPAREN
+          any ::= * DASHMATCH
+          any ::= * PREFIX
+          any ::= * SUFFIX
+          any ::= * SUBSTR
+          any ::= * COLON
+          any ::= * COMMA
+          any ::= * DOT
+          any ::= * PLUS
+          any ::= * GT
+          any ::= * LPAREN ws any_list RPAREN
+          any ::= * LBRAC ws any_list RBRAC
+          any ::= * ASTERISK
+
+                         COMMA shift-reduce 66     any ::= COMMA
+                          PLUS shift-reduce 68     any ::= PLUS
+                            GT shift-reduce 69     any ::= GT
+                         IDENT shift-reduce 50     any ::= IDENT
+                      ASTERISK shift-reduce 72     any ::= ASTERISK
+                          HASH shift-reduce 57     any ::= HASH
+                           DOT shift-reduce 67     any ::= DOT
+                         LBRAC shift        63     
+                        STRING shift-reduce 54     any ::= STRING
+                      INCLUDES shift-reduce 59     any ::= INCLUDES
+                     DASHMATCH shift-reduce 61     any ::= DASHMATCH
+                        PREFIX shift-reduce 62     any ::= PREFIX
+                        SUFFIX shift-reduce 63     any ::= SUFFIX
+                        SUBSTR shift-reduce 64     any ::= SUBSTR
+                         COLON shift-reduce 65     any ::= COLON
+                      FUNCTION shift        66     
+                         DELIM shift-reduce 55     any ::= DELIM
+                        NUMBER shift-reduce 51     any ::= NUMBER
+                    PERCENTAGE shift-reduce 52     any ::= PERCENTAGE
+                     DIMENSION shift-reduce 53     any ::= DIMENSION
+                           URI shift-reduce 56     any ::= URI
+                 UNICODE_RANGE shift-reduce 58     any ::= UNICODE_RANGE
+                        LPAREN shift        64     
+                      any_list shift-reduce 49     any_list_1 ::= any ws any_list
+                           any shift        65     
+                     {default} reduce       47     any_list ::=
+
+State 13:
+          declaration ::= property ws COLON ws * value ws
+          value ::= * any ws
+          value ::= * any ws value
+          value ::= * value ws block
+          value ::= * value ws ATKEYWORD ws
+          any ::= * IDENT
+          any ::= * NUMBER
+          any ::= * PERCENTAGE
+          any ::= * DIMENSION
+          any ::= * STRING
+          any ::= * DELIM
+          any ::= * URI
+          any ::= * HASH
+          any ::= * UNICODE_RANGE
+          any ::= * INCLUDES
+          any ::= * FUNCTION ws any_list RPAREN
+          any ::= * DASHMATCH
+          any ::= * PREFIX
+          any ::= * SUFFIX
+          any ::= * SUBSTR
+          any ::= * COLON
+          any ::= * COMMA
+          any ::= * DOT
+          any ::= * PLUS
+          any ::= * GT
+          any ::= * LPAREN ws any_list RPAREN
+          any ::= * LBRAC ws any_list RBRAC
+          any ::= * ASTERISK
+
+                         COMMA shift-reduce 66     any ::= COMMA
+                          PLUS shift-reduce 68     any ::= PLUS
+                            GT shift-reduce 69     any ::= GT
+                         IDENT shift-reduce 50     any ::= IDENT
+                      ASTERISK shift-reduce 72     any ::= ASTERISK
+                          HASH shift-reduce 57     any ::= HASH
+                           DOT shift-reduce 67     any ::= DOT
+                         LBRAC shift        63     
+                        STRING shift-reduce 54     any ::= STRING
+                      INCLUDES shift-reduce 59     any ::= INCLUDES
+                     DASHMATCH shift-reduce 61     any ::= DASHMATCH
+                        PREFIX shift-reduce 62     any ::= PREFIX
+                        SUFFIX shift-reduce 63     any ::= SUFFIX
+                        SUBSTR shift-reduce 64     any ::= SUBSTR
+                         COLON shift-reduce 65     any ::= COLON
+                      FUNCTION shift        66     
+                         DELIM shift-reduce 55     any ::= DELIM
+                        NUMBER shift-reduce 51     any ::= NUMBER
+                    PERCENTAGE shift-reduce 52     any ::= PERCENTAGE
+                     DIMENSION shift-reduce 53     any ::= DIMENSION
+                           URI shift-reduce 56     any ::= URI
+                 UNICODE_RANGE shift-reduce 58     any ::= UNICODE_RANGE
+                        LPAREN shift        64     
+                           any shift        55     
+                         value shift        52     
+
+State 14:
+          value ::= * any ws
+     (43) value ::= any ws *
+          value ::= * any ws value
+          value ::= any ws * value
+          value ::= * value ws block
+          value ::= * value ws ATKEYWORD ws
+          any ::= * IDENT
+          any ::= * NUMBER
+          any ::= * PERCENTAGE
+          any ::= * DIMENSION
+          any ::= * STRING
+          any ::= * DELIM
+          any ::= * URI
+          any ::= * HASH
+          any ::= * UNICODE_RANGE
+          any ::= * INCLUDES
+          any ::= * FUNCTION ws any_list RPAREN
+          any ::= * DASHMATCH
+          any ::= * PREFIX
+          any ::= * SUFFIX
+          any ::= * SUBSTR
+          any ::= * COLON
+          any ::= * COMMA
+          any ::= * DOT
+          any ::= * PLUS
+          any ::= * GT
+          any ::= * LPAREN ws any_list RPAREN
+          any ::= * LBRAC ws any_list RBRAC
+          any ::= * ASTERISK
+
+                         COMMA shift-reduce 66     any ::= COMMA
+                          PLUS shift-reduce 68     any ::= PLUS
+                            GT shift-reduce 69     any ::= GT
+                         IDENT shift-reduce 50     any ::= IDENT
+                      ASTERISK shift-reduce 72     any ::= ASTERISK
+                          HASH shift-reduce 57     any ::= HASH
+                           DOT shift-reduce 67     any ::= DOT
+                         LBRAC shift        63     
+                        STRING shift-reduce 54     any ::= STRING
+                      INCLUDES shift-reduce 59     any ::= INCLUDES
+                     DASHMATCH shift-reduce 61     any ::= DASHMATCH
+                        PREFIX shift-reduce 62     any ::= PREFIX
+                        SUFFIX shift-reduce 63     any ::= SUFFIX
+                        SUBSTR shift-reduce 64     any ::= SUBSTR
+                         COLON shift-reduce 65     any ::= COLON
+                      FUNCTION shift        66     
+                         DELIM shift-reduce 55     any ::= DELIM
+                        NUMBER shift-reduce 51     any ::= NUMBER
+                    PERCENTAGE shift-reduce 52     any ::= PERCENTAGE
+                     DIMENSION shift-reduce 53     any ::= DIMENSION
+                           URI shift-reduce 56     any ::= URI
+                 UNICODE_RANGE shift-reduce 58     any ::= UNICODE_RANGE
+                        LPAREN shift        64     
+                           any shift        55     
+                         value shift        24     
+                     {default} reduce       43     value ::= any ws
+
+State 15:
+          declaration ::= DELIM property ws COLON ws * value ws
+          value ::= * any ws
+          value ::= * any ws value
+          value ::= * value ws block
+          value ::= * value ws ATKEYWORD ws
+          any ::= * IDENT
+          any ::= * NUMBER
+          any ::= * PERCENTAGE
+          any ::= * DIMENSION
+          any ::= * STRING
+          any ::= * DELIM
+          any ::= * URI
+          any ::= * HASH
+          any ::= * UNICODE_RANGE
+          any ::= * INCLUDES
+          any ::= * FUNCTION ws any_list RPAREN
+          any ::= * DASHMATCH
+          any ::= * PREFIX
+          any ::= * SUFFIX
+          any ::= * SUBSTR
+          any ::= * COLON
+          any ::= * COMMA
+          any ::= * DOT
+          any ::= * PLUS
+          any ::= * GT
+          any ::= * LPAREN ws any_list RPAREN
+          any ::= * LBRAC ws any_list RBRAC
+          any ::= * ASTERISK
+
+                         COMMA shift-reduce 66     any ::= COMMA
+                          PLUS shift-reduce 68     any ::= PLUS
+                            GT shift-reduce 69     any ::= GT
+                         IDENT shift-reduce 50     any ::= IDENT
+                      ASTERISK shift-reduce 72     any ::= ASTERISK
+                          HASH shift-reduce 57     any ::= HASH
+                           DOT shift-reduce 67     any ::= DOT
+                         LBRAC shift        63     
+                        STRING shift-reduce 54     any ::= STRING
+                      INCLUDES shift-reduce 59     any ::= INCLUDES
+                     DASHMATCH shift-reduce 61     any ::= DASHMATCH
+                        PREFIX shift-reduce 62     any ::= PREFIX
+                        SUFFIX shift-reduce 63     any ::= SUFFIX
+                        SUBSTR shift-reduce 64     any ::= SUBSTR
+                         COLON shift-reduce 65     any ::= COLON
+                      FUNCTION shift        66     
+                         DELIM shift-reduce 55     any ::= DELIM
+                        NUMBER shift-reduce 51     any ::= NUMBER
+                    PERCENTAGE shift-reduce 52     any ::= PERCENTAGE
+                     DIMENSION shift-reduce 53     any ::= DIMENSION
+                           URI shift-reduce 56     any ::= URI
+                 UNICODE_RANGE shift-reduce 58     any ::= UNICODE_RANGE
+                        LPAREN shift        64     
+                           any shift        55     
+                         value shift        57     
+
+State 16:
+     (47) any_list ::= *
+          any_list ::= * any ws any_list
+          any ::= * IDENT
+          any ::= * NUMBER
+          any ::= * PERCENTAGE
+          any ::= * DIMENSION
+          any ::= * STRING
+          any ::= * DELIM
+          any ::= * URI
+          any ::= * HASH
+          any ::= * UNICODE_RANGE
+          any ::= * INCLUDES
+          any ::= * FUNCTION ws any_list RPAREN
+          any ::= * DASHMATCH
+          any ::= * PREFIX
+          any ::= * SUFFIX
+          any ::= * SUBSTR
+          any ::= * COLON
+          any ::= * COMMA
+          any ::= * DOT
+          any ::= * PLUS
+          any ::= * GT
+          any ::= * LPAREN ws any_list RPAREN
+          any ::= * LBRAC ws any_list RBRAC
+          any ::= LBRAC ws * any_list RBRAC
+          any ::= * ASTERISK
+
+                         COMMA shift-reduce 66     any ::= COMMA
+                          PLUS shift-reduce 68     any ::= PLUS
+                            GT shift-reduce 69     any ::= GT
+                         IDENT shift-reduce 50     any ::= IDENT
+                      ASTERISK shift-reduce 72     any ::= ASTERISK
+                          HASH shift-reduce 57     any ::= HASH
+                           DOT shift-reduce 67     any ::= DOT
+                         LBRAC shift        63     
+                        STRING shift-reduce 54     any ::= STRING
+                      INCLUDES shift-reduce 59     any ::= INCLUDES
+                     DASHMATCH shift-reduce 61     any ::= DASHMATCH
+                        PREFIX shift-reduce 62     any ::= PREFIX
+                        SUFFIX shift-reduce 63     any ::= SUFFIX
+                        SUBSTR shift-reduce 64     any ::= SUBSTR
+                         COLON shift-reduce 65     any ::= COLON
+                      FUNCTION shift        66     
+                         DELIM shift-reduce 55     any ::= DELIM
+                        NUMBER shift-reduce 51     any ::= NUMBER
+                    PERCENTAGE shift-reduce 52     any ::= PERCENTAGE
+                     DIMENSION shift-reduce 53     any ::= DIMENSION
+                           URI shift-reduce 56     any ::= URI
+                 UNICODE_RANGE shift-reduce 58     any ::= UNICODE_RANGE
+                        LPAREN shift        64     
+                      any_list shift        124    
+                           any shift        65     
+                     {default} reduce       47     any_list ::=
+
+State 17:
+     (47) any_list ::= *
+          any_list ::= * any ws any_list
+          any ::= * IDENT
+          any ::= * NUMBER
+          any ::= * PERCENTAGE
+          any ::= * DIMENSION
+          any ::= * STRING
+          any ::= * DELIM
+          any ::= * URI
+          any ::= * HASH
+          any ::= * UNICODE_RANGE
+          any ::= * INCLUDES
+          any ::= * FUNCTION ws any_list RPAREN
+          any ::= * DASHMATCH
+          any ::= * PREFIX
+          any ::= * SUFFIX
+          any ::= * SUBSTR
+          any ::= * COLON
+          any ::= * COMMA
+          any ::= * DOT
+          any ::= * PLUS
+          any ::= * GT
+          any ::= * LPAREN ws any_list RPAREN
+          any ::= LPAREN ws * any_list RPAREN
+          any ::= * LBRAC ws any_list RBRAC
+          any ::= * ASTERISK
+
+                         COMMA shift-reduce 66     any ::= COMMA
+                          PLUS shift-reduce 68     any ::= PLUS
+                            GT shift-reduce 69     any ::= GT
+                         IDENT shift-reduce 50     any ::= IDENT
+                      ASTERISK shift-reduce 72     any ::= ASTERISK
+                          HASH shift-reduce 57     any ::= HASH
+                           DOT shift-reduce 67     any ::= DOT
+                         LBRAC shift        63     
+                        STRING shift-reduce 54     any ::= STRING
+                      INCLUDES shift-reduce 59     any ::= INCLUDES
+                     DASHMATCH shift-reduce 61     any ::= DASHMATCH
+                        PREFIX shift-reduce 62     any ::= PREFIX
+                        SUFFIX shift-reduce 63     any ::= SUFFIX
+                        SUBSTR shift-reduce 64     any ::= SUBSTR
+                         COLON shift-reduce 65     any ::= COLON
+                      FUNCTION shift        66     
+                         DELIM shift-reduce 55     any ::= DELIM
+                        NUMBER shift-reduce 51     any ::= NUMBER
+                    PERCENTAGE shift-reduce 52     any ::= PERCENTAGE
+                     DIMENSION shift-reduce 53     any ::= DIMENSION
+                           URI shift-reduce 56     any ::= URI
+                 UNICODE_RANGE shift-reduce 58     any ::= UNICODE_RANGE
+                        LPAREN shift        64     
+                      any_list shift        125    
+                           any shift        65     
+                     {default} reduce       47     any_list ::=
+
+State 18:
+     (47) any_list ::= *
+          any_list ::= * any ws any_list
+          any_list ::= any ws * any_list
+          any ::= * IDENT
+          any ::= * NUMBER
+          any ::= * PERCENTAGE
+          any ::= * DIMENSION
+          any ::= * STRING
+          any ::= * DELIM
+          any ::= * URI
+          any ::= * HASH
+          any ::= * UNICODE_RANGE
+          any ::= * INCLUDES
+          any ::= * FUNCTION ws any_list RPAREN
+          any ::= * DASHMATCH
+          any ::= * PREFIX
+          any ::= * SUFFIX
+          any ::= * SUBSTR
+          any ::= * COLON
+          any ::= * COMMA
+          any ::= * DOT
+          any ::= * PLUS
+          any ::= * GT
+          any ::= * LPAREN ws any_list RPAREN
+          any ::= * LBRAC ws any_list RBRAC
+          any ::= * ASTERISK
+
+                         COMMA shift-reduce 66     any ::= COMMA
+                          PLUS shift-reduce 68     any ::= PLUS
+                            GT shift-reduce 69     any ::= GT
+                         IDENT shift-reduce 50     any ::= IDENT
+                      ASTERISK shift-reduce 72     any ::= ASTERISK
+                          HASH shift-reduce 57     any ::= HASH
+                           DOT shift-reduce 67     any ::= DOT
+                         LBRAC shift        63     
+                        STRING shift-reduce 54     any ::= STRING
+                      INCLUDES shift-reduce 59     any ::= INCLUDES
+                     DASHMATCH shift-reduce 61     any ::= DASHMATCH
+                        PREFIX shift-reduce 62     any ::= PREFIX
+                        SUFFIX shift-reduce 63     any ::= SUFFIX
+                        SUBSTR shift-reduce 64     any ::= SUBSTR
+                         COLON shift-reduce 65     any ::= COLON
+                      FUNCTION shift        66     
+                         DELIM shift-reduce 55     any ::= DELIM
+                        NUMBER shift-reduce 51     any ::= NUMBER
+                    PERCENTAGE shift-reduce 52     any ::= PERCENTAGE
+                     DIMENSION shift-reduce 53     any ::= DIMENSION
+                           URI shift-reduce 56     any ::= URI
+                 UNICODE_RANGE shift-reduce 58     any ::= UNICODE_RANGE
+                        LPAREN shift        64     
+                      any_list shift-reduce 48     any_list ::= any ws any_list
+                           any shift        65     
+                     {default} reduce       47     any_list ::=
+
+State 19:
+     (47) any_list ::= *
+          any_list ::= * any ws any_list
+          any ::= * IDENT
+          any ::= * NUMBER
+          any ::= * PERCENTAGE
+          any ::= * DIMENSION
+          any ::= * STRING
+          any ::= * DELIM
+          any ::= * URI
+          any ::= * HASH
+          any ::= * UNICODE_RANGE
+          any ::= * INCLUDES
+          any ::= * FUNCTION ws any_list RPAREN
+          any ::= FUNCTION ws * any_list RPAREN
+          any ::= * DASHMATCH
+          any ::= * PREFIX
+          any ::= * SUFFIX
+          any ::= * SUBSTR
+          any ::= * COLON
+          any ::= * COMMA
+          any ::= * DOT
+          any ::= * PLUS
+          any ::= * GT
+          any ::= * LPAREN ws any_list RPAREN
+          any ::= * LBRAC ws any_list RBRAC
+          any ::= * ASTERISK
+
+                         COMMA shift-reduce 66     any ::= COMMA
+                          PLUS shift-reduce 68     any ::= PLUS
+                            GT shift-reduce 69     any ::= GT
+                         IDENT shift-reduce 50     any ::= IDENT
+                      ASTERISK shift-reduce 72     any ::= ASTERISK
+                          HASH shift-reduce 57     any ::= HASH
+                           DOT shift-reduce 67     any ::= DOT
+                         LBRAC shift        63     
+                        STRING shift-reduce 54     any ::= STRING
+                      INCLUDES shift-reduce 59     any ::= INCLUDES
+                     DASHMATCH shift-reduce 61     any ::= DASHMATCH
+                        PREFIX shift-reduce 62     any ::= PREFIX
+                        SUFFIX shift-reduce 63     any ::= SUFFIX
+                        SUBSTR shift-reduce 64     any ::= SUBSTR
+                         COLON shift-reduce 65     any ::= COLON
+                      FUNCTION shift        66     
+                         DELIM shift-reduce 55     any ::= DELIM
+                        NUMBER shift-reduce 51     any ::= NUMBER
+                    PERCENTAGE shift-reduce 52     any ::= PERCENTAGE
+                     DIMENSION shift-reduce 53     any ::= DIMENSION
+                           URI shift-reduce 56     any ::= URI
+                 UNICODE_RANGE shift-reduce 58     any ::= UNICODE_RANGE
+                        LPAREN shift        64     
+                      any_list shift        123    
+                           any shift        65     
+                     {default} reduce       47     any_list ::=
+
+State 20:
+          at_rule ::= ATKEYWORD ws * any_list block
+          at_rule ::= ATKEYWORD ws * any_list SEMI ws
+     (47) any_list ::= *
+          any_list ::= * any ws any_list
+          any ::= * IDENT
+          any ::= * NUMBER
+          any ::= * PERCENTAGE
+          any ::= * DIMENSION
+          any ::= * STRING
+          any ::= * DELIM
+          any ::= * URI
+          any ::= * HASH
+          any ::= * UNICODE_RANGE
+          any ::= * INCLUDES
+          any ::= * FUNCTION ws any_list RPAREN
+          any ::= * DASHMATCH
+          any ::= * PREFIX
+          any ::= * SUFFIX
+          any ::= * SUBSTR
+          any ::= * COLON
+          any ::= * COMMA
+          any ::= * DOT
+          any ::= * PLUS
+          any ::= * GT
+          any ::= * LPAREN ws any_list RPAREN
+          any ::= * LBRAC ws any_list RBRAC
+          any ::= * ASTERISK
+
+                         COMMA shift-reduce 66     any ::= COMMA
+                          PLUS shift-reduce 68     any ::= PLUS
+                            GT shift-reduce 69     any ::= GT
+                         IDENT shift-reduce 50     any ::= IDENT
+                      ASTERISK shift-reduce 72     any ::= ASTERISK
+                          HASH shift-reduce 57     any ::= HASH
+                           DOT shift-reduce 67     any ::= DOT
+                         LBRAC shift        63     
+                        STRING shift-reduce 54     any ::= STRING
+                      INCLUDES shift-reduce 59     any ::= INCLUDES
+                     DASHMATCH shift-reduce 61     any ::= DASHMATCH
+                        PREFIX shift-reduce 62     any ::= PREFIX
+                        SUFFIX shift-reduce 63     any ::= SUFFIX
+                        SUBSTR shift-reduce 64     any ::= SUBSTR
+                         COLON shift-reduce 65     any ::= COLON
+                      FUNCTION shift        66     
+                         DELIM shift-reduce 55     any ::= DELIM
+                        NUMBER shift-reduce 51     any ::= NUMBER
+                    PERCENTAGE shift-reduce 52     any ::= PERCENTAGE
+                     DIMENSION shift-reduce 53     any ::= DIMENSION
+                           URI shift-reduce 56     any ::= URI
+                 UNICODE_RANGE shift-reduce 58     any ::= UNICODE_RANGE
+                        LPAREN shift        64     
+                      any_list shift        77     
+                           any shift        65     
+                     {default} reduce       47     any_list ::=
+
+State 21:
+     (74) ws ::= *
+          ws ::= * ws_1
+          ws_1 ::= * S
+          ws_1 ::= * ws_1 S
+          detail ::= LBRAC ws IDENT * ws RBRAC
+          detail ::= LBRAC ws IDENT * ws EQUALS ws IDENT ws RBRAC
+          detail ::= LBRAC ws IDENT * ws EQUALS ws STRING ws RBRAC
+          detail ::= LBRAC ws IDENT * ws INCLUDES ws IDENT ws RBRAC
+          detail ::= LBRAC ws IDENT * ws INCLUDES ws STRING ws RBRAC
+          detail ::= LBRAC ws IDENT * ws DASHMATCH ws IDENT ws RBRAC
+          detail ::= LBRAC ws IDENT * ws DASHMATCH ws STRING ws RBRAC
+          detail ::= LBRAC ws IDENT * ws PREFIX ws IDENT ws RBRAC
+          detail ::= LBRAC ws IDENT * ws PREFIX ws STRING ws RBRAC
+          detail ::= LBRAC ws IDENT * ws SUFFIX ws IDENT ws RBRAC
+          detail ::= LBRAC ws IDENT * ws SUFFIX ws STRING ws RBRAC
+          detail ::= LBRAC ws IDENT * ws SUBSTR ws IDENT ws RBRAC
+          detail ::= LBRAC ws IDENT * ws SUBSTR ws STRING ws RBRAC
+     (50) any ::= IDENT *
+
+                             S shift-reduce 76     ws_1 ::= S
+                             S reduce       50      ** Parsing conflict **
+                         RBRAC reduce       74     ws ::=
+                         RBRAC reduce       50      ** Parsing conflict **
+                        EQUALS reduce       74     ws ::=
+                      INCLUDES reduce       74     ws ::=
+                      INCLUDES reduce       50      ** Parsing conflict **
+                     DASHMATCH reduce       74     ws ::=
+                     DASHMATCH reduce       50      ** Parsing conflict **
+                        PREFIX reduce       74     ws ::=
+                        PREFIX reduce       50      ** Parsing conflict **
+                        SUFFIX reduce       74     ws ::=
+                        SUFFIX reduce       50      ** Parsing conflict **
+                        SUBSTR reduce       74     ws ::=
+                        SUBSTR reduce       50      ** Parsing conflict **
+                            ws shift        84     
+                          ws_1 shift        126    
+                     {default} reduce       50     any ::= IDENT
+
+State 22:
+          detail_list ::= * detail
+     (16) detail_list ::= detail *
+          detail_list ::= * detail detail_list
+          detail_list ::= detail * detail_list
+          detail ::= * HASH
+          detail ::= * DOT IDENT
+          detail ::= * LBRAC ws IDENT ws RBRAC
+          detail ::= * LBRAC ws IDENT ws EQUALS ws IDENT ws RBRAC
+          detail ::= * LBRAC ws IDENT ws EQUALS ws STRING ws RBRAC
+          detail ::= * LBRAC ws IDENT ws INCLUDES ws IDENT ws RBRAC
+          detail ::= * LBRAC ws IDENT ws INCLUDES ws STRING ws RBRAC
+          detail ::= * LBRAC ws IDENT ws DASHMATCH ws IDENT ws RBRAC
+          detail ::= * LBRAC ws IDENT ws DASHMATCH ws STRING ws RBRAC
+          detail ::= * LBRAC ws IDENT ws PREFIX ws IDENT ws RBRAC
+          detail ::= * LBRAC ws IDENT ws PREFIX ws STRING ws RBRAC
+          detail ::= * LBRAC ws IDENT ws SUFFIX ws IDENT ws RBRAC
+          detail ::= * LBRAC ws IDENT ws SUFFIX ws STRING ws RBRAC
+          detail ::= * LBRAC ws IDENT ws SUBSTR ws IDENT ws RBRAC
+          detail ::= * LBRAC ws IDENT ws SUBSTR ws STRING ws RBRAC
+          detail ::= * COLON IDENT
+          detail ::= * COLON FUNCTION ws IDENT ws RPAREN
+          detail ::= * COLON FUNCTION ws RPAREN
+
+                          HASH shift-reduce 18     detail ::= HASH
+                           DOT shift        118    
+                         LBRAC shift        47     
+                         COLON shift        91     
+                   detail_list shift-reduce 17     detail_list ::= detail detail_list
+                        detail shift        22     
+                     {default} reduce       16     detail_list ::= detail
+
+State 23:
+          simple_selector ::= element_name * detail_list
+     (12) simple_selector ::= element_name *
+          detail_list ::= * detail
+          detail_list ::= * detail detail_list
+          detail ::= * HASH
+          detail ::= * DOT IDENT
+          detail ::= * LBRAC ws IDENT ws RBRAC
+          detail ::= * LBRAC ws IDENT ws EQUALS ws IDENT ws RBRAC
+          detail ::= * LBRAC ws IDENT ws EQUALS ws STRING ws RBRAC
+          detail ::= * LBRAC ws IDENT ws INCLUDES ws IDENT ws RBRAC
+          detail ::= * LBRAC ws IDENT ws INCLUDES ws STRING ws RBRAC
+          detail ::= * LBRAC ws IDENT ws DASHMATCH ws IDENT ws RBRAC
+          detail ::= * LBRAC ws IDENT ws DASHMATCH ws STRING ws RBRAC
+          detail ::= * LBRAC ws IDENT ws PREFIX ws IDENT ws RBRAC
+          detail ::= * LBRAC ws IDENT ws PREFIX ws STRING ws RBRAC
+          detail ::= * LBRAC ws IDENT ws SUFFIX ws IDENT ws RBRAC
+          detail ::= * LBRAC ws IDENT ws SUFFIX ws STRING ws RBRAC
+          detail ::= * LBRAC ws IDENT ws SUBSTR ws IDENT ws RBRAC
+          detail ::= * LBRAC ws IDENT ws SUBSTR ws STRING ws RBRAC
+          detail ::= * COLON IDENT
+          detail ::= * COLON FUNCTION ws IDENT ws RPAREN
+          detail ::= * COLON FUNCTION ws RPAREN
+
+                          HASH shift-reduce 18     detail ::= HASH
+                           DOT shift        118    
+                         LBRAC shift        47     
+                         COLON shift        91     
+                   detail_list shift-reduce 11     simple_selector ::= element_name detail_list
+                        detail shift        22     
+                     {default} reduce       12     simple_selector ::= element_name
+
+State 24:
+     (74) ws ::= *
+          ws ::= * ws_1
+          ws_1 ::= * S
+          ws_1 ::= * ws_1 S
+     (44) value ::= any ws value *
+          value ::= value * ws block
+          value ::= value * ws ATKEYWORD ws
+
+                             S shift-reduce 76     ws_1 ::= S
+                             S reduce       44      ** Parsing conflict **
+                     ATKEYWORD reduce       44      ** Parsing conflict **
+                          SEMI reduce       44     value ::= any ws value
+                        LBRACE reduce       44      ** Parsing conflict **
+                        RBRACE reduce       44     value ::= any ws value
+                            ws shift        75     
+                          ws_1 shift        126    
+                     {default} reduce       74     ws ::=
+
+State 25:
+     (74) ws ::= *
+          ws ::= * ws_1
+          ws_1 ::= * S
+          ws_1 ::= * ws_1 S
+          detail ::= LBRAC * ws IDENT ws RBRAC
+          detail ::= LBRAC * ws IDENT ws EQUALS ws IDENT ws RBRAC
+          detail ::= LBRAC * ws IDENT ws EQUALS ws STRING ws RBRAC
+          detail ::= LBRAC * ws IDENT ws INCLUDES ws IDENT ws RBRAC
+          detail ::= LBRAC * ws IDENT ws INCLUDES ws STRING ws RBRAC
+          detail ::= LBRAC * ws IDENT ws DASHMATCH ws IDENT ws RBRAC
+          detail ::= LBRAC * ws IDENT ws DASHMATCH ws STRING ws RBRAC
+          detail ::= LBRAC * ws IDENT ws PREFIX ws IDENT ws RBRAC
+          detail ::= LBRAC * ws IDENT ws PREFIX ws STRING ws RBRAC
+          detail ::= LBRAC * ws IDENT ws SUFFIX ws IDENT ws RBRAC
+          detail ::= LBRAC * ws IDENT ws SUFFIX ws STRING ws RBRAC
+          detail ::= LBRAC * ws IDENT ws SUBSTR ws IDENT ws RBRAC
+          detail ::= LBRAC * ws IDENT ws SUBSTR ws STRING ws RBRAC
+          any ::= LBRAC * ws any_list RBRAC
+
+                             S shift-reduce 76     ws_1 ::= S
+                            ws shift        11     
+                          ws_1 shift        126    
+                     {default} reduce       74     ws ::=
+
+State 26:
+     (74) ws ::= *
+          ws ::= * ws_1
+          ws_1 ::= * S
+          ws_1 ::= * ws_1 S
+          detail ::= COLON FUNCTION ws IDENT * ws RPAREN
+
+                             S shift-reduce 76     ws_1 ::= S
+                            ws shift        104    
+                          ws_1 shift        126    
+                     {default} reduce       74     ws ::=
+
+State 27:
+     (74) ws ::= *
+          ws ::= * ws_1
+          ws_1 ::= * S
+          ws_1 ::= * ws_1 S
+          detail ::= COLON FUNCTION * ws IDENT ws RPAREN
+          detail ::= COLON FUNCTION * ws RPAREN
+
+                             S shift-reduce 76     ws_1 ::= S
+                            ws shift        90     
+                          ws_1 shift        126    
+                     {default} reduce       74     ws ::=
+
+State 28:
+     (74) ws ::= *
+          ws ::= * ws_1
+          ws_1 ::= * S
+          ws_1 ::= * ws_1 S
+          detail ::= LBRAC ws IDENT ws SUBSTR ws STRING * ws RBRAC
+
+                             S shift-reduce 76     ws_1 ::= S
+                            ws shift        105    
+                          ws_1 shift        126    
+                     {default} reduce       74     ws ::=
+
+State 29:
+     (74) ws ::= *
+          ws ::= * ws_1
+          ws_1 ::= * S
+          ws_1 ::= * ws_1 S
+          detail ::= LBRAC ws IDENT ws SUBSTR ws IDENT * ws RBRAC
+
+                             S shift-reduce 76     ws_1 ::= S
+                            ws shift        106    
+                          ws_1 shift        126    
+                     {default} reduce       74     ws ::=
+
+State 30:
+     (74) ws ::= *
+          ws ::= * ws_1
+          ws_1 ::= * S
+          ws_1 ::= * ws_1 S
+          detail ::= LBRAC ws IDENT ws SUBSTR * ws IDENT ws RBRAC
+          detail ::= LBRAC ws IDENT ws SUBSTR * ws STRING ws RBRAC
+
+                             S shift-reduce 76     ws_1 ::= S
+                            ws shift        92     
+                          ws_1 shift        126    
+                     {default} reduce       74     ws ::=
+
+State 31:
+     (74) ws ::= *
+          ws ::= * ws_1
+          ws_1 ::= * S
+          ws_1 ::= * ws_1 S
+          detail ::= LBRAC ws IDENT ws SUFFIX ws STRING * ws RBRAC
+
+                             S shift-reduce 76     ws_1 ::= S
+                            ws shift        107    
+                          ws_1 shift        126    
+                     {default} reduce       74     ws ::=
+
+State 32:
+     (74) ws ::= *
+          ws ::= * ws_1
+          ws_1 ::= * S
+          ws_1 ::= * ws_1 S
+          detail ::= LBRAC ws IDENT ws SUFFIX ws IDENT * ws RBRAC
+
+                             S shift-reduce 76     ws_1 ::= S
+                            ws shift        108    
+                          ws_1 shift        126    
+                     {default} reduce       74     ws ::=
+
+State 33:
+     (74) ws ::= *
+          ws ::= * ws_1
+          ws_1 ::= * S
+          ws_1 ::= * ws_1 S
+          detail ::= LBRAC ws IDENT ws SUFFIX * ws IDENT ws RBRAC
+          detail ::= LBRAC ws IDENT ws SUFFIX * ws STRING ws RBRAC
+
+                             S shift-reduce 76     ws_1 ::= S
+                            ws shift        93     
+                          ws_1 shift        126    
+                     {default} reduce       74     ws ::=
+
+State 34:
+     (74) ws ::= *
+          ws ::= * ws_1
+          ws_1 ::= * S
+          ws_1 ::= * ws_1 S
+          detail ::= LBRAC ws IDENT ws PREFIX ws STRING * ws RBRAC
+
+                             S shift-reduce 76     ws_1 ::= S
+                            ws shift        109    
+                          ws_1 shift        126    
+                     {default} reduce       74     ws ::=
+
+State 35:
+     (74) ws ::= *
+          ws ::= * ws_1
+          ws_1 ::= * S
+          ws_1 ::= * ws_1 S
+          detail ::= LBRAC ws IDENT ws PREFIX ws IDENT * ws RBRAC
+
+                             S shift-reduce 76     ws_1 ::= S
+                            ws shift        110    
+                          ws_1 shift        126    
+                     {default} reduce       74     ws ::=
+
+State 36:
+     (74) ws ::= *
+          ws ::= * ws_1
+          ws_1 ::= * S
+          ws_1 ::= * ws_1 S
+          detail ::= LBRAC ws IDENT ws PREFIX * ws IDENT ws RBRAC
+          detail ::= LBRAC ws IDENT ws PREFIX * ws STRING ws RBRAC
+
+                             S shift-reduce 76     ws_1 ::= S
+                            ws shift        94     
+                          ws_1 shift        126    
+                     {default} reduce       74     ws ::=
+
+State 37:
+     (74) ws ::= *
+          ws ::= * ws_1
+          ws_1 ::= * S
+          ws_1 ::= * ws_1 S
+          detail ::= LBRAC ws IDENT ws DASHMATCH ws STRING * ws RBRAC
+
+                             S shift-reduce 76     ws_1 ::= S
+                            ws shift        111    
+                          ws_1 shift        126    
+                     {default} reduce       74     ws ::=
+
+State 38:
+     (74) ws ::= *
+          ws ::= * ws_1
+          ws_1 ::= * S
+          ws_1 ::= * ws_1 S
+          detail ::= LBRAC ws IDENT ws DASHMATCH ws IDENT * ws RBRAC
+
+                             S shift-reduce 76     ws_1 ::= S
+                            ws shift        112    
+                          ws_1 shift        126    
+                     {default} reduce       74     ws ::=
+
+State 39:
+     (74) ws ::= *
+          ws ::= * ws_1
+          ws_1 ::= * S
+          ws_1 ::= * ws_1 S
+          detail ::= LBRAC ws IDENT ws DASHMATCH * ws IDENT ws RBRAC
+          detail ::= LBRAC ws IDENT ws DASHMATCH * ws STRING ws RBRAC
+
+                             S shift-reduce 76     ws_1 ::= S
+                            ws shift        95     
+                          ws_1 shift        126    
+                     {default} reduce       74     ws ::=
+
+State 40:
+     (74) ws ::= *
+          ws ::= * ws_1
+          ws_1 ::= * S
+          ws_1 ::= * ws_1 S
+          detail ::= LBRAC ws IDENT ws INCLUDES ws STRING * ws RBRAC
+
+                             S shift-reduce 76     ws_1 ::= S
+                            ws shift        113    
+                          ws_1 shift        126    
+                     {default} reduce       74     ws ::=
+
+State 41:
+     (74) ws ::= *
+          ws ::= * ws_1
+          ws_1 ::= * S
+          ws_1 ::= * ws_1 S
+          detail ::= LBRAC ws IDENT ws INCLUDES ws IDENT * ws RBRAC
+
+                             S shift-reduce 76     ws_1 ::= S
+                            ws shift        114    
+                          ws_1 shift        126    
+                     {default} reduce       74     ws ::=
+
+State 42:
+     (74) ws ::= *
+          ws ::= * ws_1
+          ws_1 ::= * S
+          ws_1 ::= * ws_1 S
+          detail ::= LBRAC ws IDENT ws INCLUDES * ws IDENT ws RBRAC
+          detail ::= LBRAC ws IDENT ws INCLUDES * ws STRING ws RBRAC
+
+                             S shift-reduce 76     ws_1 ::= S
+                            ws shift        96     
+                          ws_1 shift        126    
+                     {default} reduce       74     ws ::=
+
+State 43:
+     (74) ws ::= *
+          ws ::= * ws_1
+          ws_1 ::= * S
+          ws_1 ::= * ws_1 S
+          detail ::= LBRAC ws IDENT ws EQUALS ws STRING * ws RBRAC
+
+                             S shift-reduce 76     ws_1 ::= S
+                            ws shift        115    
+                          ws_1 shift        126    
+                     {default} reduce       74     ws ::=
+
+State 44:
+     (74) ws ::= *
+          ws ::= * ws_1
+          ws_1 ::= * S
+          ws_1 ::= * ws_1 S
+          detail ::= LBRAC ws IDENT ws EQUALS ws IDENT * ws RBRAC
+
+                             S shift-reduce 76     ws_1 ::= S
+                            ws shift        116    
+                          ws_1 shift        126    
+                     {default} reduce       74     ws ::=
+
+State 45:
+     (74) ws ::= *
+          ws ::= * ws_1
+          ws_1 ::= * S
+          ws_1 ::= * ws_1 S
+          detail ::= LBRAC ws IDENT ws EQUALS * ws IDENT ws RBRAC
+          detail ::= LBRAC ws IDENT ws EQUALS * ws STRING ws RBRAC
+
+                             S shift-reduce 76     ws_1 ::= S
+                            ws shift        97     
+                          ws_1 shift        126    
+                     {default} reduce       74     ws ::=
+
+State 46:
+     (74) ws ::= *
+          ws ::= * ws_1
+          ws_1 ::= * S
+          ws_1 ::= * ws_1 S
+          detail ::= LBRAC ws IDENT * ws RBRAC
+          detail ::= LBRAC ws IDENT * ws EQUALS ws IDENT ws RBRAC
+          detail ::= LBRAC ws IDENT * ws EQUALS ws STRING ws RBRAC
+          detail ::= LBRAC ws IDENT * ws INCLUDES ws IDENT ws RBRAC
+          detail ::= LBRAC ws IDENT * ws INCLUDES ws STRING ws RBRAC
+          detail ::= LBRAC ws IDENT * ws DASHMATCH ws IDENT ws RBRAC
+          detail ::= LBRAC ws IDENT * ws DASHMATCH ws STRING ws RBRAC
+          detail ::= LBRAC ws IDENT * ws PREFIX ws IDENT ws RBRAC
+          detail ::= LBRAC ws IDENT * ws PREFIX ws STRING ws RBRAC
+          detail ::= LBRAC ws IDENT * ws SUFFIX ws IDENT ws RBRAC
+          detail ::= LBRAC ws IDENT * ws SUFFIX ws STRING ws RBRAC
+          detail ::= LBRAC ws IDENT * ws SUBSTR ws IDENT ws RBRAC
+          detail ::= LBRAC ws IDENT * ws SUBSTR ws STRING ws RBRAC
+
+                             S shift-reduce 76     ws_1 ::= S
+                            ws shift        84     
+                          ws_1 shift        126    
+                     {default} reduce       74     ws ::=
+
+State 47:
+     (74) ws ::= *
+          ws ::= * ws_1
+          ws_1 ::= * S
+          ws_1 ::= * ws_1 S
+          detail ::= LBRAC * ws IDENT ws RBRAC
+          detail ::= LBRAC * ws IDENT ws EQUALS ws IDENT ws RBRAC
+          detail ::= LBRAC * ws IDENT ws EQUALS ws STRING ws RBRAC
+          detail ::= LBRAC * ws IDENT ws INCLUDES ws IDENT ws RBRAC
+          detail ::= LBRAC * ws IDENT ws INCLUDES ws STRING ws RBRAC
+          detail ::= LBRAC * ws IDENT ws DASHMATCH ws IDENT ws RBRAC
+          detail ::= LBRAC * ws IDENT ws DASHMATCH ws STRING ws RBRAC
+          detail ::= LBRAC * ws IDENT ws PREFIX ws IDENT ws RBRAC
+          detail ::= LBRAC * ws IDENT ws PREFIX ws STRING ws RBRAC
+          detail ::= LBRAC * ws IDENT ws SUFFIX ws IDENT ws RBRAC
+          detail ::= LBRAC * ws IDENT ws SUFFIX ws STRING ws RBRAC
+          detail ::= LBRAC * ws IDENT ws SUBSTR ws IDENT ws RBRAC
+          detail ::= LBRAC * ws IDENT ws SUBSTR ws STRING ws RBRAC
+
+                             S shift-reduce 76     ws_1 ::= S
+                            ws shift        117    
+                          ws_1 shift        126    
+                     {default} reduce       74     ws ::=
+
+State 48:
+     (74) ws ::= *
+          ws ::= * ws_1
+          ws_1 ::= * S
+          ws_1 ::= * ws_1 S
+          css_combinator ::= ws GT * ws
+
+                             S shift-reduce 76     ws_1 ::= S
+                            ws shift-reduce 9      css_combinator ::= ws GT ws
+                          ws_1 shift        126    
+                     {default} reduce       74     ws ::=
+
+State 49:
+     (74) ws ::= *
+          ws ::= * ws_1
+          ws_1 ::= * S
+          ws_1 ::= * ws_1 S
+          css_combinator ::= ws PLUS * ws
+
+                             S shift-reduce 76     ws_1 ::= S
+                            ws shift-reduce 8      css_combinator ::= ws PLUS ws
+                          ws_1 shift        126    
+                     {default} reduce       74     ws ::=
+
+State 50:
+     (74) ws ::= *
+          ws ::= * ws_1
+          ws_1 ::= * S
+          ws_1 ::= * ws_1 S
+          selector_list ::= selector_list COMMA * ws selector ws
+
+                             S shift-reduce 76     ws_1 ::= S
+                            ws shift        6      
+                          ws_1 shift        126    
+                     {default} reduce       74     ws ::=
+
+State 51:
+     (74) ws ::= *
+          ws ::= * ws_1
+          ws_1 ::= * S
+          ws_1 ::= * ws_1 S
+          any_list_1 ::= any * ws any_list
+
+                             S shift-reduce 76     ws_1 ::= S
+                            ws shift        12     
+                          ws_1 shift        126    
+                     {default} reduce       74     ws ::=
+
+State 52:
+     (74) ws ::= *
+          ws ::= * ws_1
+          ws_1 ::= * S
+          ws_1 ::= * ws_1 S
+          declaration ::= property ws COLON ws value * ws
+          value ::= value * ws block
+          value ::= value * ws ATKEYWORD ws
+
+                             S shift-reduce 76     ws_1 ::= S
+                            ws shift        74     
+                          ws_1 shift        126    
+                     {default} reduce       74     ws ::=
+
+State 53:
+     (74) ws ::= *
+          ws ::= * ws_1
+          ws_1 ::= * S
+          ws_1 ::= * ws_1 S
+          declaration ::= property ws COLON * ws value ws
+
+                             S shift-reduce 76     ws_1 ::= S
+                            ws shift        13     
+                          ws_1 shift        126    
+                     {default} reduce       74     ws ::=
+
+State 54:
+     (74) ws ::= *
+          ws ::= * ws_1
+          ws_1 ::= * S
+          ws_1 ::= * ws_1 S
+          declaration ::= property * ws COLON ws value ws
+
+                             S shift-reduce 76     ws_1 ::= S
+                            ws shift        119    
+                          ws_1 shift        126    
+                     {default} reduce       74     ws ::=
+
+State 55:
+     (74) ws ::= *
+          ws ::= * ws_1
+          ws_1 ::= * S
+          ws_1 ::= * ws_1 S
+          value ::= any * ws
+          value ::= any * ws value
+
+                             S shift-reduce 76     ws_1 ::= S
+                             S reduce       74      ** Parsing conflict **
+                            ws shift        14     
+                          ws_1 shift        126    
+                     {default} reduce       74     ws ::=
+
+State 56:
+     (74) ws ::= *
+          ws ::= * ws_1
+          ws_1 ::= * S
+          ws_1 ::= * ws_1 S
+          value ::= value ws ATKEYWORD * ws
+
+                             S shift-reduce 76     ws_1 ::= S
+                             S reduce       74      ** Parsing conflict **
+                            ws shift-reduce 46     value ::= value ws ATKEYWORD ws
+                          ws_1 shift        126    
+                     {default} reduce       74     ws ::=
+
+State 57:
+     (74) ws ::= *
+          ws ::= * ws_1
+          ws_1 ::= * S
+          ws_1 ::= * ws_1 S
+          declaration ::= DELIM property ws COLON ws value * ws
+          value ::= value * ws block
+          value ::= value * ws ATKEYWORD ws
+
+                             S shift-reduce 76     ws_1 ::= S
+                            ws shift        76     
+                          ws_1 shift        126    
+                     {default} reduce       74     ws ::=
+
+State 58:
+     (74) ws ::= *
+          ws ::= * ws_1
+          ws_1 ::= * S
+          ws_1 ::= * ws_1 S
+          declaration ::= DELIM property ws COLON * ws value ws
+
+                             S shift-reduce 76     ws_1 ::= S
+                            ws shift        15     
+                          ws_1 shift        126    
+                     {default} reduce       74     ws ::=
+
+State 59:
+     (74) ws ::= *
+          ws ::= * ws_1
+          ws_1 ::= * S
+          ws_1 ::= * ws_1 S
+          declaration ::= DELIM property * ws COLON ws value ws
+
+                             S shift-reduce 76     ws_1 ::= S
+                            ws shift        120    
+                          ws_1 shift        126    
+                     {default} reduce       74     ws ::=
+
+State 60:
+     (74) ws ::= *
+          ws ::= * ws_1
+          ws_1 ::= * S
+          ws_1 ::= * ws_1 S
+          declaration_list ::= declaration SEMI * ws declaration_list
+
+                             S shift-reduce 76     ws_1 ::= S
+                            ws shift        4      
+                          ws_1 shift        126    
+                     {default} reduce       74     ws ::=
+
+State 61:
+     (74) ws ::= *
+          ws ::= * ws_1
+          ws_1 ::= * S
+          ws_1 ::= * ws_1 S
+          ruleset ::= selector_list LBRACE ws declaration_list RBRACE * ws
+
+                             S shift-reduce 76     ws_1 ::= S
+                             S reduce       74      ** Parsing conflict **
+                            ws shift-reduce 1      ruleset ::= selector_list LBRACE ws declaration_list RBRACE ws
+                          ws_1 shift        126    
+                     {default} reduce       74     ws ::=
+
+State 62:
+     (74) ws ::= *
+          ws ::= * ws_1
+          ws_1 ::= * S
+          ws_1 ::= * ws_1 S
+          ruleset ::= selector_list LBRACE * ws declaration_list RBRACE ws
+
+                             S shift-reduce 76     ws_1 ::= S
+                            ws shift        5      
+                          ws_1 shift        126    
+                     {default} reduce       74     ws ::=
+
+State 63:
+     (74) ws ::= *
+          ws ::= * ws_1
+          ws_1 ::= * S
+          ws_1 ::= * ws_1 S
+          any ::= LBRAC * ws any_list RBRAC
+
+                             S shift-reduce 76     ws_1 ::= S
+                            ws shift        16     
+                          ws_1 shift        126    
+                     {default} reduce       74     ws ::=
+
+State 64:
+     (74) ws ::= *
+          ws ::= * ws_1
+          ws_1 ::= * S
+          ws_1 ::= * ws_1 S
+          any ::= LPAREN * ws any_list RPAREN
+
+                             S shift-reduce 76     ws_1 ::= S
+                            ws shift        17     
+                          ws_1 shift        126    
+                     {default} reduce       74     ws ::=
+
+State 65:
+     (74) ws ::= *
+          ws ::= * ws_1
+          ws_1 ::= * S
+          ws_1 ::= * ws_1 S
+          any_list ::= any * ws any_list
+
+                             S shift-reduce 76     ws_1 ::= S
+                            ws shift        18     
+                          ws_1 shift        126    
+                     {default} reduce       74     ws ::=
+
+State 66:
+     (74) ws ::= *
+          ws ::= * ws_1
+          ws_1 ::= * S
+          ws_1 ::= * ws_1 S
+          any ::= FUNCTION * ws any_list RPAREN
+
+                             S shift-reduce 76     ws_1 ::= S
+                            ws shift        19     
+                          ws_1 shift        126    
+                     {default} reduce       74     ws ::=
+
+State 67:
+     (74) ws ::= *
+          ws ::= * ws_1
+          ws_1 ::= * S
+          ws_1 ::= * ws_1 S
+          block_body ::= block_body SEMI * ws
+
+                             S shift-reduce 76     ws_1 ::= S
+                            ws shift-reduce 89     block_body ::= block_body SEMI ws
+                          ws_1 shift        126    
+                     {default} reduce       74     ws ::=
+
+State 68:
+     (74) ws ::= *
+          ws ::= * ws_1
+          ws_1 ::= * S
+          ws_1 ::= * ws_1 S
+          block_body ::= block_body ATKEYWORD * ws
+
+                             S shift-reduce 76     ws_1 ::= S
+                            ws shift-reduce 88     block_body ::= block_body ATKEYWORD ws
+                          ws_1 shift        126    
+                     {default} reduce       74     ws ::=
+
+State 69:
+     (74) ws ::= *
+          ws ::= * ws_1
+          ws_1 ::= * S
+          ws_1 ::= * ws_1 S
+          block_body ::= block_body any * ws
+
+                             S shift-reduce 76     ws_1 ::= S
+                            ws shift-reduce 86     block_body ::= block_body any ws
+                          ws_1 shift        126    
+                     {default} reduce       74     ws ::=
+
+State 70:
+     (74) ws ::= *
+          ws ::= * ws_1
+          ws_1 ::= * S
+          ws_1 ::= * ws_1 S
+          block ::= LBRACE ws block_body RBRACE * ws
+
+                             S shift-reduce 76     ws_1 ::= S
+                             S reduce       74      ** Parsing conflict **
+                            ws shift-reduce 84     block ::= LBRACE ws block_body RBRACE ws
+                          ws_1 shift        126    
+                     {default} reduce       74     ws ::=
+
+State 71:
+     (74) ws ::= *
+          ws ::= * ws_1
+          ws_1 ::= * S
+          ws_1 ::= * ws_1 S
+          block ::= LBRACE * ws block_body RBRACE ws
+
+                             S shift-reduce 76     ws_1 ::= S
+                            ws shift        79     
+                          ws_1 shift        126    
+                     {default} reduce       74     ws ::=
+
+State 72:
+     (74) ws ::= *
+          ws ::= * ws_1
+          ws_1 ::= * S
+          ws_1 ::= * ws_1 S
+          at_rule ::= ATKEYWORD ws any_list SEMI * ws
+
+                             S shift-reduce 76     ws_1 ::= S
+                             S reduce       74      ** Parsing conflict **
+                            ws shift-reduce 0      at_rule ::= ATKEYWORD ws any_list SEMI ws
+                          ws_1 shift        126    
+                     {default} reduce       74     ws ::=
+
+State 73:
+     (74) ws ::= *
+          ws ::= * ws_1
+          ws_1 ::= * S
+          ws_1 ::= * ws_1 S
+          at_rule ::= ATKEYWORD * ws any_list block
+          at_rule ::= ATKEYWORD * ws any_list SEMI ws
+
+                             S shift-reduce 76     ws_1 ::= S
+                            ws shift        20     
+                          ws_1 shift        126    
+                     {default} reduce       74     ws ::=
+
+State 74:
+          block ::= * LBRACE ws block_body RBRACE ws
+     (40) declaration ::= property ws COLON ws value ws *
+          value ::= value ws * block
+          value ::= value ws * ATKEYWORD ws
+
+                     ATKEYWORD shift        56     
+                        LBRACE shift        71     
+                         block shift-reduce 45     value ::= value ws block
+                     {default} reduce       40     declaration ::= property ws COLON ws value ws
+
+State 75:
+          block ::= * LBRACE ws block_body RBRACE ws
+          value ::= value ws * block
+          value ::= value ws * ATKEYWORD ws
+
+                     ATKEYWORD shift        56     
+                        LBRACE shift        71     
+                         block shift-reduce 45     value ::= value ws block
+
+State 76:
+          block ::= * LBRACE ws block_body RBRACE ws
+     (90) declaration ::= DELIM property ws COLON ws value ws *
+          value ::= value ws * block
+          value ::= value ws * ATKEYWORD ws
+
+                     ATKEYWORD shift        56     
+                        LBRACE shift        71     
+                         block shift-reduce 45     value ::= value ws block
+                     {default} reduce       90     declaration ::= DELIM property ws COLON ws value ws
+
+State 77:
+          at_rule ::= ATKEYWORD ws any_list * block
+          at_rule ::= ATKEYWORD ws any_list * SEMI ws
+          block ::= * LBRACE ws block_body RBRACE ws
+
+                          SEMI shift        72     
+                        LBRACE shift        71     
+                         block shift-reduce 83     at_rule ::= ATKEYWORD ws any_list block
+
+State 78:
+          declaration ::= DELIM * property ws COLON ws value ws
+          property ::= * IDENT
+     (55) any ::= DELIM *
+
+                         IDENT shift-reduce 42     property ::= IDENT
+                         IDENT reduce       55      ** Parsing conflict **
+                      property shift        59     
+                     {default} reduce       55     any ::= DELIM
+
+State 79:
+          block ::= LBRACE ws * block_body RBRACE ws
+     (85) block_body ::= *
+          block_body ::= * block_body any ws
+          block_body ::= * block_body block
+          block_body ::= * block_body ATKEYWORD ws
+          block_body ::= * block_body SEMI ws
+
+                    block_body shift        10     
+                     {default} reduce       85     block_body ::=
+
+State 80:
+          stylesheet ::= ws * statement_list
+     (78) statement_list ::= *
+          statement_list ::= * statement_list statement
+
+                statement_list shift        1      
+                     {default} reduce       78     statement_list ::=
+
+State 81:
+     (18) detail ::= HASH *
+     (57) any ::= HASH *
+
+                             S reduce       18     detail ::= HASH
+                             S reduce       57      ** Parsing conflict **
+                        LBRACE reduce       18     detail ::= HASH
+                        LBRACE reduce       57      ** Parsing conflict **
+                         COMMA reduce       18     detail ::= HASH
+                         COMMA reduce       57      ** Parsing conflict **
+                          PLUS reduce       18     detail ::= HASH
+                          PLUS reduce       57      ** Parsing conflict **
+                            GT reduce       18     detail ::= HASH
+                            GT reduce       57      ** Parsing conflict **
+                          HASH reduce       18     detail ::= HASH
+                          HASH reduce       57      ** Parsing conflict **
+                           DOT reduce       18     detail ::= HASH
+                           DOT reduce       57      ** Parsing conflict **
+                         LBRAC reduce       18     detail ::= HASH
+                         LBRAC reduce       57      ** Parsing conflict **
+                         COLON reduce       18     detail ::= HASH
+                         COLON reduce       57      ** Parsing conflict **
+                     {default} reduce       57     any ::= HASH
+
+State 82:
+     (15) element_name ::= ASTERISK *
+     (72) any ::= ASTERISK *
+
+                             S reduce       15     element_name ::= ASTERISK
+                             S reduce       72      ** Parsing conflict **
+                        LBRACE reduce       15     element_name ::= ASTERISK
+                        LBRACE reduce       72      ** Parsing conflict **
+                         COMMA reduce       15     element_name ::= ASTERISK
+                         COMMA reduce       72      ** Parsing conflict **
+                          PLUS reduce       15     element_name ::= ASTERISK
+                          PLUS reduce       72      ** Parsing conflict **
+                            GT reduce       15     element_name ::= ASTERISK
+                            GT reduce       72      ** Parsing conflict **
+                          HASH reduce       15     element_name ::= ASTERISK
+                          HASH reduce       72      ** Parsing conflict **
+                           DOT reduce       15     element_name ::= ASTERISK
+                           DOT reduce       72      ** Parsing conflict **
+                         LBRAC reduce       15     element_name ::= ASTERISK
+                         LBRAC reduce       72      ** Parsing conflict **
+                         COLON reduce       15     element_name ::= ASTERISK
+                         COLON reduce       72      ** Parsing conflict **
+                     {default} reduce       72     any ::= ASTERISK
+
+State 83:
+     (14) element_name ::= IDENT *
+     (50) any ::= IDENT *
+
+                             S reduce       14     element_name ::= IDENT
+                             S reduce       50      ** Parsing conflict **
+                        LBRACE reduce       14     element_name ::= IDENT
+                        LBRACE reduce       50      ** Parsing conflict **
+                         COMMA reduce       14     element_name ::= IDENT
+                         COMMA reduce       50      ** Parsing conflict **
+                          PLUS reduce       14     element_name ::= IDENT
+                          PLUS reduce       50      ** Parsing conflict **
+                            GT reduce       14     element_name ::= IDENT
+                            GT reduce       50      ** Parsing conflict **
+                          HASH reduce       14     element_name ::= IDENT
+                          HASH reduce       50      ** Parsing conflict **
+                           DOT reduce       14     element_name ::= IDENT
+                           DOT reduce       50      ** Parsing conflict **
+                         LBRAC reduce       14     element_name ::= IDENT
+                         LBRAC reduce       50      ** Parsing conflict **
+                         COLON reduce       14     element_name ::= IDENT
+                         COLON reduce       50      ** Parsing conflict **
+                     {default} reduce       50     any ::= IDENT
+
+State 84:
+          detail ::= LBRAC ws IDENT ws * RBRAC
+          detail ::= LBRAC ws IDENT ws * EQUALS ws IDENT ws RBRAC
+          detail ::= LBRAC ws IDENT ws * EQUALS ws STRING ws RBRAC
+          detail ::= LBRAC ws IDENT ws * INCLUDES ws IDENT ws RBRAC
+          detail ::= LBRAC ws IDENT ws * INCLUDES ws STRING ws RBRAC
+          detail ::= LBRAC ws IDENT ws * DASHMATCH ws IDENT ws RBRAC
+          detail ::= LBRAC ws IDENT ws * DASHMATCH ws STRING ws RBRAC
+          detail ::= LBRAC ws IDENT ws * PREFIX ws IDENT ws RBRAC
+          detail ::= LBRAC ws IDENT ws * PREFIX ws STRING ws RBRAC
+          detail ::= LBRAC ws IDENT ws * SUFFIX ws IDENT ws RBRAC
+          detail ::= LBRAC ws IDENT ws * SUFFIX ws STRING ws RBRAC
+          detail ::= LBRAC ws IDENT ws * SUBSTR ws IDENT ws RBRAC
+          detail ::= LBRAC ws IDENT ws * SUBSTR ws STRING ws RBRAC
+
+                         RBRAC shift-reduce 20     detail ::= LBRAC ws IDENT ws RBRAC
+                        EQUALS shift        45     
+                      INCLUDES shift        42     
+                     DASHMATCH shift        39     
+                        PREFIX shift        36     
+                        SUFFIX shift        33     
+                        SUBSTR shift        30     
+
+State 85:
+     (75) ws ::= ws_1 *
+          ws_1 ::= ws_1 * S
+     (10) css_combinator ::= ws_1 *
+
+                             S shift-reduce 77     ws_1 ::= ws_1 S
+                        LBRACE reduce       75     ws ::= ws_1
+                         COMMA reduce       75     ws ::= ws_1
+                          PLUS reduce       75     ws ::= ws_1
+                            GT reduce       75     ws ::= ws_1
+                     {default} reduce       10     css_combinator ::= ws_1
+
+State 86:
+          detail ::= COLON * IDENT
+          detail ::= COLON * FUNCTION ws IDENT ws RPAREN
+          detail ::= COLON * FUNCTION ws RPAREN
+     (65) any ::= COLON *
+
+                         IDENT shift-reduce 33     detail ::= COLON IDENT
+                      FUNCTION shift        27     
+                      FUNCTION reduce       65      ** Parsing conflict **
+                     {default} reduce       65     any ::= COLON
+
+State 87:
+      (4) selector_list ::= selector ws *
+          css_combinator ::= ws * PLUS ws
+          css_combinator ::= ws * GT ws
+
+                          PLUS shift        49     
+                            GT shift        48     
+                     {default} reduce       4      selector_list ::= selector ws
+
+State 88:
+          ruleset ::= any_list_1 LBRACE declaration_list * RBRACE
+          declaration_list ::= declaration_list * SEMI
+
+                          SEMI shift-reduce 38     declaration_list ::= declaration_list SEMI
+                        RBRACE shift-reduce 3      ruleset ::= any_list_1 LBRACE declaration_list RBRACE
+
+State 89:
+          ruleset ::= LBRACE declaration_list * RBRACE
+          declaration_list ::= declaration_list * SEMI
+
+                          SEMI shift-reduce 38     declaration_list ::= declaration_list SEMI
+                        RBRACE shift-reduce 2      ruleset ::= LBRACE declaration_list RBRACE
+
+State 90:
+          detail ::= COLON FUNCTION ws * IDENT ws RPAREN
+          detail ::= COLON FUNCTION ws * RPAREN
+
+                         IDENT shift        26     
+                        RPAREN shift-reduce 35     detail ::= COLON FUNCTION ws RPAREN
+
+State 91:
+          detail ::= COLON * IDENT
+          detail ::= COLON * FUNCTION ws IDENT ws RPAREN
+          detail ::= COLON * FUNCTION ws RPAREN
+
+                         IDENT shift-reduce 33     detail ::= COLON IDENT
+                      FUNCTION shift        27     
+
+State 92:
+          detail ::= LBRAC ws IDENT ws SUBSTR ws * IDENT ws RBRAC
+          detail ::= LBRAC ws IDENT ws SUBSTR ws * STRING ws RBRAC
+
+                         IDENT shift        29     
+                        STRING shift        28     
+
+State 93:
+          detail ::= LBRAC ws IDENT ws SUFFIX ws * IDENT ws RBRAC
+          detail ::= LBRAC ws IDENT ws SUFFIX ws * STRING ws RBRAC
+
+                         IDENT shift        32     
+                        STRING shift        31     
+
+State 94:
+          detail ::= LBRAC ws IDENT ws PREFIX ws * IDENT ws RBRAC
+          detail ::= LBRAC ws IDENT ws PREFIX ws * STRING ws RBRAC
+
+                         IDENT shift        35     
+                        STRING shift        34     
+
+State 95:
+          detail ::= LBRAC ws IDENT ws DASHMATCH ws * IDENT ws RBRAC
+          detail ::= LBRAC ws IDENT ws DASHMATCH ws * STRING ws RBRAC
+
+                         IDENT shift        38     
+                        STRING shift        37     
+
+State 96:
+          detail ::= LBRAC ws IDENT ws INCLUDES ws * IDENT ws RBRAC
+          detail ::= LBRAC ws IDENT ws INCLUDES ws * STRING ws RBRAC
+
+                         IDENT shift        41     
+                        STRING shift        40     
+
+State 97:
+          detail ::= LBRAC ws IDENT ws EQUALS ws * IDENT ws RBRAC
+          detail ::= LBRAC ws IDENT ws EQUALS ws * STRING ws RBRAC
+
+                         IDENT shift        44     
+                        STRING shift        43     
+
+State 98:
+      (5) selector_list ::= selector_list COMMA ws selector ws *
+          css_combinator ::= ws * PLUS ws
+          css_combinator ::= ws * GT ws
+
+                          PLUS shift        49     
+                            GT shift        48     
+                     {default} reduce       5      selector_list ::= selector_list COMMA ws selector ws
+
+State 99:
+     (42) property ::= IDENT *
+     (50) any ::= IDENT *
+
+                             S reduce       42     property ::= IDENT
+                             S reduce       50      ** Parsing conflict **
+                         COLON reduce       42     property ::= IDENT
+                         COLON reduce       50      ** Parsing conflict **
+                     {default} reduce       50     any ::= IDENT
+
+State 100:
+          ruleset ::= selector_list LBRACE ws declaration_list * RBRACE ws
+          declaration_list ::= declaration_list * SEMI
+
+                          SEMI shift-reduce 38     declaration_list ::= declaration_list SEMI
+                        RBRACE shift        61     
+
+State 101:
+          ruleset ::= selector_list * LBRACE ws declaration_list RBRACE ws
+          selector_list ::= selector_list * COMMA ws selector ws
+
+                        LBRACE shift        62     
+                         COMMA shift        50     
+
+State 102:
+          detail ::= DOT * IDENT
+     (67) any ::= DOT *
+
+                         IDENT shift-reduce 19     detail ::= DOT IDENT
+                     {default} reduce       67     any ::= DOT
+
+State 103:
+          ruleset ::= any_list_1 * LBRACE declaration_list RBRACE
+
+                        LBRACE shift        2      
+
+State 104:
+          detail ::= COLON FUNCTION ws IDENT ws * RPAREN
+
+                        RPAREN shift-reduce 34     detail ::= COLON FUNCTION ws IDENT ws RPAREN
+
+State 105:
+          detail ::= LBRAC ws IDENT ws SUBSTR ws STRING ws * RBRAC
+
+                         RBRAC shift-reduce 32     detail ::= LBRAC ws IDENT ws SUBSTR ws STRING ws RBRAC
+
+State 106:
+          detail ::= LBRAC ws IDENT ws SUBSTR ws IDENT ws * RBRAC
+
+                         RBRAC shift-reduce 31     detail ::= LBRAC ws IDENT ws SUBSTR ws IDENT ws RBRAC
+
+State 107:
+          detail ::= LBRAC ws IDENT ws SUFFIX ws STRING ws * RBRAC
+
+                         RBRAC shift-reduce 30     detail ::= LBRAC ws IDENT ws SUFFIX ws STRING ws RBRAC
+
+State 108:
+          detail ::= LBRAC ws IDENT ws SUFFIX ws IDENT ws * RBRAC
+
+                         RBRAC shift-reduce 29     detail ::= LBRAC ws IDENT ws SUFFIX ws IDENT ws RBRAC
+
+State 109:
+          detail ::= LBRAC ws IDENT ws PREFIX ws STRING ws * RBRAC
+
+                         RBRAC shift-reduce 28     detail ::= LBRAC ws IDENT ws PREFIX ws STRING ws RBRAC
+
+State 110:
+          detail ::= LBRAC ws IDENT ws PREFIX ws IDENT ws * RBRAC
+
+                         RBRAC shift-reduce 27     detail ::= LBRAC ws IDENT ws PREFIX ws IDENT ws RBRAC
+
+State 111:
+          detail ::= LBRAC ws IDENT ws DASHMATCH ws STRING ws * RBRAC
+
+                         RBRAC shift-reduce 26     detail ::= LBRAC ws IDENT ws DASHMATCH ws STRING ws RBRAC
+
+State 112:
+          detail ::= LBRAC ws IDENT ws DASHMATCH ws IDENT ws * RBRAC
+
+                         RBRAC shift-reduce 25     detail ::= LBRAC ws IDENT ws DASHMATCH ws IDENT ws RBRAC
+
+State 113:
+          detail ::= LBRAC ws IDENT ws INCLUDES ws STRING ws * RBRAC
+
+                         RBRAC shift-reduce 24     detail ::= LBRAC ws IDENT ws INCLUDES ws STRING ws RBRAC
+
+State 114:
+          detail ::= LBRAC ws IDENT ws INCLUDES ws IDENT ws * RBRAC
+
+                         RBRAC shift-reduce 23     detail ::= LBRAC ws IDENT ws INCLUDES ws IDENT ws RBRAC
+
+State 115:
+          detail ::= LBRAC ws IDENT ws EQUALS ws STRING ws * RBRAC
+
+                         RBRAC shift-reduce 22     detail ::= LBRAC ws IDENT ws EQUALS ws STRING ws RBRAC
+
+State 116:
+          detail ::= LBRAC ws IDENT ws EQUALS ws IDENT ws * RBRAC
+
+                         RBRAC shift-reduce 21     detail ::= LBRAC ws IDENT ws EQUALS ws IDENT ws RBRAC
+
+State 117:
+          detail ::= LBRAC ws * IDENT ws RBRAC
+          detail ::= LBRAC ws * IDENT ws EQUALS ws IDENT ws RBRAC
+          detail ::= LBRAC ws * IDENT ws EQUALS ws STRING ws RBRAC
+          detail ::= LBRAC ws * IDENT ws INCLUDES ws IDENT ws RBRAC
+          detail ::= LBRAC ws * IDENT ws INCLUDES ws STRING ws RBRAC
+          detail ::= LBRAC ws * IDENT ws DASHMATCH ws IDENT ws RBRAC
+          detail ::= LBRAC ws * IDENT ws DASHMATCH ws STRING ws RBRAC
+          detail ::= LBRAC ws * IDENT ws PREFIX ws IDENT ws RBRAC
+          detail ::= LBRAC ws * IDENT ws PREFIX ws STRING ws RBRAC
+          detail ::= LBRAC ws * IDENT ws SUFFIX ws IDENT ws RBRAC
+          detail ::= LBRAC ws * IDENT ws SUFFIX ws STRING ws RBRAC
+          detail ::= LBRAC ws * IDENT ws SUBSTR ws IDENT ws RBRAC
+          detail ::= LBRAC ws * IDENT ws SUBSTR ws STRING ws RBRAC
+
+                         IDENT shift        46     
+
+State 118:
+          detail ::= DOT * IDENT
+
+                         IDENT shift-reduce 19     detail ::= DOT IDENT
+
+State 119:
+          declaration ::= property ws * COLON ws value ws
+
+                         COLON shift        53     
+
+State 120:
+          declaration ::= DELIM property ws * COLON ws value ws
+
+                         COLON shift        58     
+
+State 121:
+          declaration_list ::= declaration_list * SEMI
+     (39) declaration_list ::= declaration SEMI ws declaration_list *
+
+                          SEMI shift-reduce 38     declaration_list ::= declaration_list SEMI
+                          SEMI reduce       39      ** Parsing conflict **
+                     {default} reduce       39     declaration_list ::= declaration SEMI ws declaration_list
+
+State 122:
+     (37) declaration_list ::= declaration *
+          declaration_list ::= declaration * SEMI ws declaration_list
+
+                          SEMI shift        60     
+                          SEMI reduce       37      ** Parsing conflict **
+                     {default} reduce       37     declaration_list ::= declaration
+
+State 123:
+          any ::= FUNCTION ws any_list * RPAREN
+
+                        RPAREN shift-reduce 60     any ::= FUNCTION ws any_list RPAREN
+
+State 124:
+          any ::= LBRAC ws any_list * RBRAC
+
+                         RBRAC shift-reduce 71     any ::= LBRAC ws any_list RBRAC
+
+State 125:
+          any ::= LPAREN ws any_list * RPAREN
+
+                        RPAREN shift-reduce 70     any ::= LPAREN ws any_list RPAREN
+
+State 126:
+     (75) ws ::= ws_1 *
+          ws_1 ::= ws_1 * S
+
+                             S shift-reduce 77     ws_1 ::= ws_1 S
+                             S reduce       75      ** Parsing conflict **
+                     {default} reduce       75     ws ::= ws_1
+
+State 127:
+          ws_1 ::= ws_1 * S
+     (80) statement ::= ws_1 *
+
+                             S shift-reduce 77     ws_1 ::= ws_1 S
+                             S reduce       80      ** Parsing conflict **
+                     {default} reduce       80     statement ::= ws_1
+
+----------------------------------------------------
+Symbols:
+The first-set of non-terminals is shown after the name.
+
+    0: $:
+    1: S
+    2: ATKEYWORD
+    3: SEMI
+    4: LBRACE (precedence=4)
+    5: RBRACE
+    6: COMMA (precedence=1)
+    7: PLUS (precedence=1)
+    8: GT (precedence=1)
+    9: IDENT (precedence=3)
+   10: ASTERISK
+   11: HASH (precedence=1)
+   12: DOT (precedence=2)
+   13: LBRAC (precedence=1)
+   14: RBRAC
+   15: EQUALS
+   16: STRING
+   17: INCLUDES
+   18: DASHMATCH
+   19: PREFIX
+   20: SUFFIX
+   21: SUBSTR
+   22: COLON (precedence=1)
+   23: FUNCTION
+   24: RPAREN
+   25: DELIM
+   26: NUMBER
+   27: PERCENTAGE
+   28: DIMENSION
+   29: URI
+   30: UNICODE_RANGE
+   31: LPAREN
+   32: stylesheet: <lambda> S ATKEYWORD LBRACE COMMA PLUS GT IDENT ASTERISK HASH DOT LBRAC STRING INCLUDES DASHMATCH PREFIX SUFFIX SUBSTR COLON FUNCTION DELIM NUMBER PERCENTAGE DIMENSION URI UNICODE_RANGE LPAREN
+   33: ws: <lambda> S
+   34: statement_list: <lambda> S ATKEYWORD LBRACE COMMA PLUS GT IDENT ASTERISK HASH DOT LBRAC STRING INCLUDES DASHMATCH PREFIX SUFFIX SUBSTR COLON FUNCTION DELIM NUMBER PERCENTAGE DIMENSION URI UNICODE_RANGE LPAREN
+   35: ws_1: S
+   36: statement: S ATKEYWORD LBRACE COMMA PLUS GT IDENT ASTERISK HASH DOT LBRAC STRING INCLUDES DASHMATCH PREFIX SUFFIX SUBSTR COLON FUNCTION DELIM NUMBER PERCENTAGE DIMENSION URI UNICODE_RANGE LPAREN
+   37: ruleset: LBRACE COMMA PLUS GT IDENT ASTERISK HASH DOT LBRAC STRING INCLUDES DASHMATCH PREFIX SUFFIX SUBSTR COLON FUNCTION DELIM NUMBER PERCENTAGE DIMENSION URI UNICODE_RANGE LPAREN
+   38: at_rule: ATKEYWORD
+   39: any_list: <lambda> COMMA PLUS GT IDENT ASTERISK HASH DOT LBRAC STRING INCLUDES DASHMATCH PREFIX SUFFIX SUBSTR COLON FUNCTION DELIM NUMBER PERCENTAGE DIMENSION URI UNICODE_RANGE LPAREN
+   40: block: LBRACE
+   41: block_body: <lambda> ATKEYWORD SEMI LBRACE COMMA PLUS GT IDENT ASTERISK HASH DOT LBRAC STRING INCLUDES DASHMATCH PREFIX SUFFIX SUBSTR COLON FUNCTION DELIM NUMBER PERCENTAGE DIMENSION URI UNICODE_RANGE LPAREN
+   42: any: COMMA PLUS GT IDENT ASTERISK HASH DOT LBRAC STRING INCLUDES DASHMATCH PREFIX SUFFIX SUBSTR COLON FUNCTION DELIM NUMBER PERCENTAGE DIMENSION URI UNICODE_RANGE LPAREN
+   43: selector_list: IDENT ASTERISK HASH DOT LBRAC COLON
+   44: declaration_list: <lambda> SEMI COMMA PLUS GT IDENT ASTERISK HASH DOT LBRAC STRING INCLUDES DASHMATCH PREFIX SUFFIX SUBSTR COLON FUNCTION DELIM NUMBER PERCENTAGE DIMENSION URI UNICODE_RANGE LPAREN
+   45: any_list_1: COMMA PLUS GT IDENT ASTERISK HASH DOT LBRAC STRING INCLUDES DASHMATCH PREFIX SUFFIX SUBSTR COLON FUNCTION DELIM NUMBER PERCENTAGE DIMENSION URI UNICODE_RANGE LPAREN
+   46: selector: IDENT ASTERISK HASH DOT LBRAC COLON
+   47: simple_selector: IDENT ASTERISK HASH DOT LBRAC COLON
+   48: css_combinator: S PLUS GT
+   49: element_name: IDENT ASTERISK
+   50: detail_list: HASH DOT LBRAC COLON
+   51: detail: HASH DOT LBRAC COLON
+   52: declaration: COMMA PLUS GT IDENT ASTERISK HASH DOT LBRAC STRING INCLUDES DASHMATCH PREFIX SUFFIX SUBSTR COLON FUNCTION DELIM NUMBER PERCENTAGE DIMENSION URI UNICODE_RANGE LPAREN
+   53: property: IDENT
+   54: value: COMMA PLUS GT IDENT ASTERISK HASH DOT LBRAC STRING INCLUDES DASHMATCH PREFIX SUFFIX SUBSTR COLON FUNCTION DELIM NUMBER PERCENTAGE DIMENSION URI UNICODE_RANGE LPAREN
+----------------------------------------------------
+Syntax-only Symbols:
+The following symbols never carry semantic content.
+
+$ S SEMI LBRACE RBRACE COMMA PLUS GT DOT LBRAC RBRAC EQUALS INCLUDES
+DASHMATCH PREFIX SUFFIX SUBSTR COLON RPAREN LPAREN stylesheet ws
+statement_list ws_1 statement ruleset at_rule block block_body
+----------------------------------------------------
+Rules:
+   0: at_rule ::= ATKEYWORD ws any_list SEMI ws.
+   1: ruleset ::= selector_list LBRACE ws declaration_list RBRACE ws. [LBRACE precedence=4]
+   2: ruleset ::= LBRACE declaration_list RBRACE. [LBRACE precedence=4]
+   3: ruleset ::= any_list_1 LBRACE declaration_list RBRACE. [LBRACE precedence=4]
+   4: selector_list ::= selector ws.
+   5: selector_list ::= selector_list COMMA ws selector ws. [COMMA precedence=1]
+   6: selector ::= simple_selector.
+   7: selector ::= selector css_combinator simple_selector.
+   8: css_combinator ::= ws PLUS ws. [PLUS precedence=1]
+   9: css_combinator ::= ws GT ws. [GT precedence=1]
+  10: css_combinator ::= ws_1.
+  11: simple_selector ::= element_name detail_list.
+  12: simple_selector ::= element_name.
+  13: simple_selector ::= detail_list.
+  14: element_name ::= IDENT. [IDENT precedence=3]
+  15: element_name ::= ASTERISK.
+  16: detail_list ::= detail.
+  17: detail_list ::= detail detail_list.
+  18: detail ::= HASH. [HASH precedence=1]
+  19: detail ::= DOT IDENT. [DOT precedence=2]
+  20: detail ::= LBRAC ws IDENT ws RBRAC. [LBRAC precedence=1]
+  21: detail ::= LBRAC ws IDENT ws EQUALS ws IDENT ws RBRAC. [LBRAC precedence=1]
+  22: detail ::= LBRAC ws IDENT ws EQUALS ws STRING ws RBRAC. [LBRAC precedence=1]
+  23: detail ::= LBRAC ws IDENT ws INCLUDES ws IDENT ws RBRAC. [LBRAC precedence=1]
+  24: detail ::= LBRAC ws IDENT ws INCLUDES ws STRING ws RBRAC. [LBRAC precedence=1]
+  25: detail ::= LBRAC ws IDENT ws DASHMATCH ws IDENT ws RBRAC. [LBRAC precedence=1]
+  26: detail ::= LBRAC ws IDENT ws DASHMATCH ws STRING ws RBRAC. [LBRAC precedence=1]
+  27: detail ::= LBRAC ws IDENT ws PREFIX ws IDENT ws RBRAC. [LBRAC precedence=1]
+  28: detail ::= LBRAC ws IDENT ws PREFIX ws STRING ws RBRAC. [LBRAC precedence=1]
+  29: detail ::= LBRAC ws IDENT ws SUFFIX ws IDENT ws RBRAC. [LBRAC precedence=1]
+  30: detail ::= LBRAC ws IDENT ws SUFFIX ws STRING ws RBRAC. [LBRAC precedence=1]
+  31: detail ::= LBRAC ws IDENT ws SUBSTR ws IDENT ws RBRAC. [LBRAC precedence=1]
+  32: detail ::= LBRAC ws IDENT ws SUBSTR ws STRING ws RBRAC. [LBRAC precedence=1]
+  33: detail ::= COLON IDENT. [COLON precedence=1]
+  34: detail ::= COLON FUNCTION ws IDENT ws RPAREN. [COLON precedence=1]
+  35: detail ::= COLON FUNCTION ws RPAREN. [COLON precedence=1]
+  36: declaration_list ::=.
+  37: declaration_list ::= declaration.
+  38: declaration_list ::= declaration_list SEMI.
+  39: declaration_list ::= declaration SEMI ws declaration_list.
+  40: declaration ::= property ws COLON ws value ws. [COLON precedence=1]
+  41: declaration ::= any_list_1.
+  42: property ::= IDENT. [IDENT precedence=3]
+  43: value ::= any ws.
+  44: value ::= any ws value.
+  45: value ::= value ws block.
+  46: value ::= value ws ATKEYWORD ws.
+  47: any_list ::=.
+  48: any_list ::= any ws any_list.
+  49: any_list_1 ::= any ws any_list.
+  50: any ::= IDENT. [IDENT precedence=3]
+  51: any ::= NUMBER.
+  52: any ::= PERCENTAGE.
+  53: any ::= DIMENSION.
+  54: any ::= STRING.
+  55: any ::= DELIM.
+  56: any ::= URI.
+  57: any ::= HASH. [HASH precedence=1]
+  58: any ::= UNICODE_RANGE.
+  59: any ::= INCLUDES.
+  60: any ::= FUNCTION ws any_list RPAREN.
+  61: any ::= DASHMATCH.
+  62: any ::= PREFIX.
+  63: any ::= SUFFIX.
+  64: any ::= SUBSTR.
+  65: any ::= COLON. [COLON precedence=1]
+  66: any ::= COMMA. [COMMA precedence=1]
+  67: any ::= DOT. [DOT precedence=2]
+  68: any ::= PLUS. [PLUS precedence=1]
+  69: any ::= GT. [GT precedence=1]
+  70: any ::= LPAREN ws any_list RPAREN.
+  71: any ::= LBRAC ws any_list RBRAC. [LBRAC precedence=1]
+  72: any ::= ASTERISK.
+  73: stylesheet ::= ws statement_list.
+  74: ws ::=.
+  75: ws ::= ws_1.
+  76: ws_1 ::= S.
+  77: ws_1 ::= ws_1 S.
+  78: statement_list ::=.
+  79: statement_list ::= statement_list statement.
+  80: statement ::= ws_1.
+  81: statement ::= ruleset.
+  82: statement ::= at_rule.
+  83: at_rule ::= ATKEYWORD ws any_list block.
+  84: block ::= LBRACE ws block_body RBRACE ws. [LBRACE precedence=4]
+  85: block_body ::=.
+  86: block_body ::= block_body any ws.
+  87: block_body ::= block_body block.
+  88: block_body ::= block_body ATKEYWORD ws.
+  89: block_body ::= block_body SEMI ws.
+  90: declaration ::= DELIM property ws COLON ws value ws. [COLON precedence=1]

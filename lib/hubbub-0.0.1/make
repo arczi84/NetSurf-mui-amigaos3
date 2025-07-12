@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# 1. Prefiks Twojego cross‐toolchainu
+PREFIX=/opt/netsurf/m68k-unknown-amigaos
+PREF=$PREFIX
+# 2. Ustawienie PATH tak, żeby narzędzia cross były pierwsze
+export PATH="$PREF/cross/bin:$PATH"
+export PKG_CONFIG_PATH="/mnt/d/opt/netsurfy/netsurf-all-3.11/inst-amigaos3/lib/pkgconfig:$PREF/env/lib/pkgconfig"
+
+# 3. Flagi kompilatora i linkera (takie same jak przy configure)
+export CFLAGS+="-O2 -m68020-60 -std=c99 -g \
+  -D__clib2__ \
+  -I${PREF}/m68k-unknown-amigaos/include \
+  -I${PREF}/env/include \
+  -I${PREF}/env/m68k-unknown-amigaos/sys-include \
+  -I${PREF}/env/netinclude \
+  -I/mnt/d/opt/netsurfy/netsurf-all-3.11/inst-amigaos3/include"
+export LDFLAGS="-L${PREF}/env/lib"
+
+# 4. Wywołanie make z wymuszonymi cross‐narzędziami
+exec make -j16 -i\
+  CC=m68k-unknown-amigaos-gcc \
+  AR=/opt/amiga/bin/m68k-amigaos-ar \
+  LD=m68k-unknown-amigaos-ld \
+  RANLIB=m68k-unknown-amigaos-ranlib
